@@ -22,6 +22,7 @@ public class BoardGUI extends JFrame
     {
         setTitle("Connect Four");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
         
         this.setScreenSize();
         
@@ -51,9 +52,6 @@ public class BoardGUI extends JFrame
                 board.add(new BoardSlot());
             }
         }
-        
-        //this.add(container);
-        
         container.add(board);
         
         setVisible(true);
@@ -74,7 +72,7 @@ public class BoardGUI extends JFrame
     public static void main(String[] args) 
     {
         BoardGUI board = new BoardGUI();
-        board.setVisible(true);
+        //board.setVisible(true);
         //board.add(new BoardSlot());
     }
 }
