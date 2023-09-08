@@ -8,10 +8,17 @@ import java.awt.GridLayout;
 import java.awt.Toolkit;
 import javax.swing.*;
 
+import game.*;
+
 public class BoardGUI extends JFrame
 {
     private static final int ROWS = 6;
     private static final int COLS = 7;
+    
+    Player player1 = new Player("Player 1", Colours.RED.getColour());
+    Player player2 = new Player("Player 2", Colours.YELLOW.getColour());
+
+    Player currentPlayer = player1; // Initialize the current player
     
     private static final Color BACKGROUND = new Color(255,255,255);
     
@@ -37,6 +44,8 @@ public class BoardGUI extends JFrame
         this.initialiseBoard();
 
         this.printBoard();
+        
+        //this.currentPlayer = 
     }
     
     public int[] getColHeight()
@@ -55,10 +64,13 @@ public class BoardGUI extends JFrame
         }
     }
     
+    public void setCurrentPlayer(Player currentPlayer)
+    {
+        this.currentPlayer = currentPlayer;
+    }
+    
     public void printBoard()
     {
-        // JPanel board = new JPanel(new GridLayout(ROWS, COLS));
-        
         Container container = getContentPane();
         
         container.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -69,18 +81,41 @@ public class BoardGUI extends JFrame
             {
                 this.boardPanel.add(this.boardSlots[i][j]);
             }
-  
         }
+        
         container.add(this.boardPanel);
         setVisible(true);
     }
     
     public void dropPiece(int col)
     {
-        Color colour = Colours.YELLOW.getColour();
-        this.boardSlots[colHeight[col]][col].setCircleColour(colour);
-        this.colHeight[col]++; // increment the height of the column
-        this.printBoard();
+        try
+        {
+            //Color colour = Colours.RED.getColour();
+            
+            Color colour = currentPlayer.getColour();
+            this.boardSlots[colHeight[col]][col].setCircleColour(colour);
+            this.colHeight[col]++; // increment the height of the column
+            this.printBoard(); 
+            
+            this.switchPlayers();
+            
+        } catch (ArrayIndexOutOfBoundsException e) {
+            // add code to make player retry move
+            System.out.println("Column Full");
+        }  
+    }
+    
+    private void switchPlayers() 
+    {
+        if (currentPlayer == player1) 
+        {
+            currentPlayer = player2;
+        } 
+        else 
+        {
+            currentPlayer = player1;
+        }
     }
     
     public boolean isRowFull(int col)
