@@ -8,10 +8,13 @@ import java.awt.Color;
 
 public enum Colours
 {
+    YELLOW(new Color(255, 242, 117)),
+    RED(new Color(255, 60, 56)),
+    BLUE(new Color(102, 153, 204)),
+    EMPTY(new Color(255,255,255));
     
-    YELLOW(new Color(255, 242, 117));
-    
-    private final Color colour;
+
+    final Color colour;
     
     private Colours(Color colour)
     {
