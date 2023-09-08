@@ -24,17 +24,33 @@ public class BoardSlot extends JButton
     
     private int column;
     
-    public BoardSlot(int j)
+    private BoardGUI board;
+    
+    public BoardSlot(BoardGUI board, int col)
     {
         setPreferredSize(new Dimension(SIZE, SIZE));
         setBorderPainted(true);
         setContentAreaFilled(false);
         
-        this.column = j;
+        this.board = board;
+        
+        this.column = col;
         
         this.mouseHover();
+        this.mouseClick();
         
         this.getColumn();
+    }
+    
+    public Color getCircleColour()
+    {
+        return this.circleColour;
+    }
+    
+    public void setCircleColour(Color colour) 
+    {
+        this.circleColour = colour;
+        repaint();
     }
     
     public int getColumn()
@@ -69,8 +85,10 @@ public class BoardSlot extends JButton
             @Override
             public void mousePressed(MouseEvent e) {
 
-                circleColour = YELLOW;
-                repaint();
+                //setCircleColour(YELLOW);
+                //repaint();
+                
+                board.dropPiece(column);
             }
         });
     }
@@ -83,11 +101,11 @@ public class BoardSlot extends JButton
         g.setColor(BLUE);
         g.fillRect(0,0,SIZE,SIZE);
         
-        int circleSize = SIZE - 20;
+        int circleSize = SIZE - 15;
         int circleX = (SIZE - circleSize) / 2;
         int circleY = (SIZE - circleSize) / 2;
         
-        g.setColor(circleColour);
+        g.setColor(this.getCircleColour());
         g.fillOval(circleX, circleY, circleSize, circleSize);
     }
 }
