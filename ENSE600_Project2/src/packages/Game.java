@@ -8,6 +8,8 @@
 
 package packages;
 
+import GUI.BoardGUI;
+
 public class Game
 {
     protected Player player1;
@@ -20,6 +22,8 @@ public class Game
     protected Score score;
     
     protected UserInput userInput;
+    
+    protected BoardGUI boardGUI;
     
     public Game()
     {
@@ -71,6 +75,8 @@ public class Game
         // Initialises a new board and plays the game until it is over 
         
         this.board = new Board();
+        
+        this.boardGUI = new BoardGUI();
                 
         this.setCurrentPlayer(Player.getCurrentPlayer(getPlayer1(), getPlayer2()));
 
@@ -79,6 +85,11 @@ public class Game
             this.setCurrentPlayer(Player.getCurrentPlayer(getPlayer1(), getPlayer2())); // swaps player turn
             
             this.makeMoveMessage();
+            
+            //boardGUI.setCurrentPlayer(Player.getCurrentPlayer(getPlayer1(), getPlayer2()));
+            
+            //boardGUI.printBoard();
+
 
             getCurrentPlayer().move(board);
         }

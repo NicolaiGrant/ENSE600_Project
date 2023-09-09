@@ -7,14 +7,15 @@
 */
 
 package packages;
+import GUI.Colours;
 
 public class Human extends Player 
 {
     private String name; 
     
-    public Human(String name, Disc disc)
+    public Human(String name, Disc disc, Colours colour)
     {
-        super(disc);
+        super(disc, colour);
         this.name = name;
     }
     

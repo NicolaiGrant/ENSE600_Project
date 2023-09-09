@@ -9,16 +9,19 @@
 package packages;
 
 import java.util.Random;
+import GUI.Colours;
+import java.awt.Color;
 
 public abstract class Player
 {
     protected Disc disc;
+    protected Colours colour;
     protected int score;
     protected static int currentPlayer = 0;
     
     protected UserInput userInput;
     
-    public Player(Disc disc)
+    public Player(Disc disc, Colours colour)
     {
         this.disc = disc;
         this.score = 0;
@@ -28,6 +31,7 @@ public abstract class Player
     public Player()
     {
         this.disc = this.randomDisc();
+        this.colour = this.randomColour();
         this.score = 0;
     }
     
@@ -68,8 +72,23 @@ public abstract class Player
         {
             return Disc.RED;
         }
-        return Disc.YELLOW;
-            
+        return Disc.YELLOW;     
+    }
+    
+    public Colours randomColour()
+    {
+        // Returns a yellow or red disc at random
+        
+        Random random = new Random();
+        
+        int num = random.nextInt(2);
+        
+        if(num == 1)
+        {
+            return Colours.RED;
+        }
+        
+        return Colours.YELLOW;
     }
     
     public int getScore()
@@ -77,6 +96,11 @@ public abstract class Player
         // Returns the current player score
         
         return this.score;
+    }
+    
+    public Color getColour()
+    {
+        return this.colour.getColour();
     }
 
     public void incrementScore()

@@ -9,15 +9,16 @@
 package packages;
 
 import java.util.Random;
+import GUI.Colours;
 
 public class Bot extends Player
 {
     Random random;
     String name;
     
-    public Bot(Disc disc)
+    public Bot(Disc disc, Colours colour)
     {
-        super(disc);
+        super(disc, colour);
         this.random = new Random();
         this.name = "Bot";
     }

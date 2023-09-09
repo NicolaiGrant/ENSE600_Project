@@ -9,16 +9,20 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import game.*;
+import packages.Board;
+import packages.Disc;
 
 public class BoardGUI extends JFrame
 {
     private static final int ROWS = 6;
     private static final int COLS = 7;
     
-    Player player1 = new Player("Player 1", Colours.RED.getColour());
-    Player player2 = new Player("Player 2", Colours.YELLOW.getColour());
+    Player player1 = new Player("Player 1", Colours.RED.getColour(), Disc.RED);
+    Player player2 = new Player("Player 2", Colours.YELLOW.getColour(), Disc.YELLOW);
 
     Player currentPlayer = player1; // Initialize the current player
+    
+    private Board boardLogic;
     
     private static final Color BACKGROUND = new Color(255,255,255);
     
@@ -26,6 +30,8 @@ public class BoardGUI extends JFrame
     private BoardSlot[][] boardSlots;
     
     private int[] colHeight;
+    
+    private boolean gameRunning;
     
     public BoardGUI()
     {
@@ -39,13 +45,38 @@ public class BoardGUI extends JFrame
         
         this.colHeight = new int[COLS];
         
+        this.gameRunning = false;
+        
+        this.boardLogic = new Board();
+        
         this.setScreenSize();
         
         this.initialiseBoard();
-
         this.printBoard();
         
+        
+        
         //this.currentPlayer = 
+    }
+    
+    public void startGame()
+    {
+        this.gameRunning = true;
+    }
+    
+    public void stopGame()
+    {
+        this.gameRunning = false;
+    }
+    
+    public boolean isGameRunning()
+    {
+        return this.gameRunning;
+    }
+    
+    public Player getCurrentPlayer()
+    {
+        return this.currentPlayer;
     }
     
     public int[] getColHeight()
@@ -53,8 +84,15 @@ public class BoardGUI extends JFrame
         return this.colHeight;
     }
     
+    public Board getBoardLogic()
+    {
+        return this.boardLogic;
+    }
+    
     public void initialiseBoard()
     {
+        // Initialises the board with empty board slot objects in a 6x7 array
+        
         for(int row = 0; row < ROWS; row++)
         {
             for(int col = 0; col < COLS; col++)
@@ -71,6 +109,8 @@ public class BoardGUI extends JFrame
     
     public void printBoard()
     {
+        // Print the board slots in a 6x7 grid
+        
         Container container = getContentPane();
         
         container.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -91,7 +131,8 @@ public class BoardGUI extends JFrame
     {
         try
         {
-            //Color colour = Colours.RED.getColour();
+            System.out.println("Current Player: " + currentPlayer.getName());
+            this.getBoardLogic().dropPiece(col, currentPlayer.getDisc());
             
             Color colour = currentPlayer.getColour();
             this.boardSlots[colHeight[col]][col].setCircleColour(colour);
@@ -100,9 +141,17 @@ public class BoardGUI extends JFrame
             
             this.switchPlayers();
             
+            
+            if(this.isBoardFull())
+            {
+                this.stopGame();
+            }
+            
+            
+            
         } catch (ArrayIndexOutOfBoundsException e) {
             // add code to make player retry move
-            System.out.println("Column Full");
+            System.out.println("Try again...");
         }  
     }
     
@@ -118,13 +167,27 @@ public class BoardGUI extends JFrame
         }
     }
     
-    public boolean isRowFull(int col)
+    public boolean isColFull(int col)
     {
         // Checks colHeight array at index x and returns true if it is full
         
-        if(this.getColHeight()[col] < this.ROWS)
+        if(this.getColHeight()[col] < this.COLS - 1)
         {
             return false;
+        }
+        return true;
+    }
+    
+    public boolean isBoardFull()
+    {
+        // Returns true if the board is full 
+
+        for(int i = 0; i < COLS; i++)
+        {
+            if(!isColFull(i))
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -140,12 +203,4 @@ public class BoardGUI extends JFrame
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
-    
-    public static void main(String[] args) 
-    {
-        BoardGUI board = new BoardGUI();
-        //board.setVisible(true);
-        //board.add(new BoardSlot());
-    }
-
 }

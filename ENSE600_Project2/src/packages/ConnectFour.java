@@ -9,6 +9,7 @@
 package packages;
 
 import java.io.IOException;
+import GUI.BoardGUI;
 
 public class ConnectFour
 {

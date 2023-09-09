@@ -87,38 +87,40 @@ public final class Board
     {
         // Places the piece in the desired column and increments the column height
         
-        x = x-1; // shifts x so that index starts at 1
+        //x = x-1; // shifts x so that index starts at 1
         this.getBoard()[this.getColHeight()[x]][x] = disc.getDisc();
         this.getColHeight()[x]++; // increment the height of the column
         this.displayBoard();
     }
     
-    public boolean isRowFull(int x)
+    public boolean isRowFull(int row)
     {
         // Checks colHeight array at index x and returns true if it is full
         
-        if(this.getColHeight()[x-1] < this.ROWS)
+        if(this.getColHeight()[row] == this.COLS)
         {
-            return false;
+            System.out.println("Row Full");
+            return true;
         }
-        return true;
+        
+        return false;
+        
+        
     }
     
     public boolean isBoardFull()
     {
         // Returns true if the board is full 
         
-        boolean rowFull = true;
-        
-        for(int i = 1; i <= COLS; i++)
+        for(int col = 0; col < COLS; col++)
         {
-            if(!isRowFull(i))
+            if(!isRowFull(col))
             {
                 return false;
             }
         }
         
-        return rowFull;
+        return true;
     }
     
     public boolean isEmpty(int x, int y)
