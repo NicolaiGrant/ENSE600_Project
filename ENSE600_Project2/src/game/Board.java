@@ -102,7 +102,6 @@ public final class Board
         
         if(this.getColHeight()[row] == this.ROWS)
         {
-            System.out.println("Row Full");
             return true;
         }
         
@@ -122,9 +121,7 @@ public final class Board
                 return false;
             }
         }
-        
-        System.out.println("Board Full");
-        
+
         return true;
     }
     

@@ -24,10 +24,12 @@ public class BoardGUI extends JFrame
     
     private Board boardLogic;
     
-    private static final Color BACKGROUND = new Color(255,255,255);
+    private static final Color BACKGROUND = new Color(93, 139, 186);
     
-    private JPanel boardPanel;
+    private JPanel board;
+    private JPanel boardGrid;
     private BoardSlot[][] boardSlots;
+    
     
     private int[] colHeight;
     
@@ -35,14 +37,14 @@ public class BoardGUI extends JFrame
     
     public BoardGUI()
     {
-        setTitle("Bruhh");
+        setTitle("Connect Four! - Two Player Mode");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         getContentPane().setBackground(BACKGROUND);
-        
-        this.boardPanel = new JPanel(new GridLayout(ROWS, COLS));
+
+        this.boardGrid = new JPanel(new GridLayout(ROWS, COLS));
         this.boardSlots = new BoardSlot[ROWS][COLS];
-        
+                
         this.colHeight = new int[COLS];
         
         this.gameRunning = false;
@@ -50,8 +52,9 @@ public class BoardGUI extends JFrame
         this.boardLogic = new Board();
         
         this.setScreenSize();
-        
+                
         this.initialiseBoard();
+        
         this.printBoard();
     }
     
@@ -106,7 +109,7 @@ public class BoardGUI extends JFrame
     public void printBoard()
     {
         // Print the board slots in a 6x7 grid
-        
+
         Container container = getContentPane();
         
         container.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -115,11 +118,13 @@ public class BoardGUI extends JFrame
         {
             for(int j = 0; j < COLS; j++)
             {
-                this.boardPanel.add(this.boardSlots[i][j]);
+                this.boardGrid.add(this.boardSlots[i][j]);
             }
         }
         
-        container.add(this.boardPanel);
+        //container.add(this.board, BorderLayout.CENTER);
+        
+        container.add(this.boardGrid);
         setVisible(true);
     }
     
@@ -134,12 +139,21 @@ public class BoardGUI extends JFrame
             this.colHeight[col]++; // increment the height of the column
             this.printBoard(); 
             
+            this.setTitle(this.currentPlayer.getName() + " Move");
+            
             if(this.isConnectFour())
             {
+                this.setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
                 this.stopGame();
             }
             
-            if(this.gameRunning)
+            else if(this.isBoardFull())
+            {
+                this.setTitle("Game Over! Board is Full!");
+                this.stopGame();
+            }                  
+            
+            if(this.isGameRunning())
             {
                 this.switchPlayers();
             }
@@ -186,8 +200,4 @@ public class BoardGUI extends JFrame
     {
         return this.getBoardLogic().isBoardFull();
     }
-       
-        
-    
-    
 }
