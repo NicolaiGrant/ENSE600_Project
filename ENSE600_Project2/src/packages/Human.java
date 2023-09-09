@@ -7,6 +7,7 @@
 */
 
 package packages;
+import game.Board;
 import GUI.Colours;
 
 public class Human extends Player 

@@ -2,14 +2,21 @@
 package game;
 
 import GUI.BoardGUI;
-import packages.Board;
 
 public class Game
 {
     private BoardGUI boardGUI;
+    Player currentPlayer;
+    
 
     public Game()
     {
+        
+    }
+    
+    public Player getCurrentPlayer()
+    {
+        return this.currentPlayer;
     }
     
     public static void main(String[] args)
@@ -20,19 +27,22 @@ public class Game
     
     public void play()
     {
-        boardGUI = new BoardGUI();
-       
-        while(!this.isConnectFour())
+        this.boardGUI = new BoardGUI();
+        this.currentPlayer = this.boardGUI.getCurrentPlayer();
+        
+        boardGUI.startGame();
+        
+        while(this.boardGUI.isGameRunning())
         {
-            boardGUI.startGame();
+            this.boardGUI.setTitle(this.currentPlayer.getName() + " Move");
+            this.currentPlayer = this.boardGUI.getCurrentPlayer();
         }
         
-        boardGUI.stopGame();  
+        this.boardGUI.setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
     }
     
     public boolean isConnectFour()
     {
-        Player currentPlayer = this.boardGUI.getCurrentPlayer();
-        return this.boardGUI.getBoardLogic().isConnectFour(currentPlayer.getDisc());
+        return this.boardGUI.isConnectFour() || this.boardGUI.isBoardFull();
     }
 }

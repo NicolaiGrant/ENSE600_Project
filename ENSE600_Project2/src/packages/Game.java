@@ -8,6 +8,7 @@
 
 package packages;
 
+import game.Board;
 import GUI.BoardGUI;
 
 public class Game

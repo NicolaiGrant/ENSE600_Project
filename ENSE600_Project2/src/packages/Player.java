@@ -8,6 +8,7 @@
 
 package packages;
 
+import game.Board;
 import java.util.Random;
 import GUI.Colours;
 import java.awt.Color;

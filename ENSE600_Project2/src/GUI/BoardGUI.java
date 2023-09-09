@@ -9,7 +9,7 @@ import java.awt.Toolkit;
 import javax.swing.*;
 
 import game.*;
-import packages.Board;
+import game.Board;
 import packages.Disc;
 
 public class BoardGUI extends JFrame
@@ -35,7 +35,7 @@ public class BoardGUI extends JFrame
     
     public BoardGUI()
     {
-        setTitle("Connect Four");
+        setTitle("Bruhh");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         getContentPane().setBackground(BACKGROUND);
@@ -53,10 +53,6 @@ public class BoardGUI extends JFrame
         
         this.initialiseBoard();
         this.printBoard();
-        
-        
-        
-        //this.currentPlayer = 
     }
     
     public void startGame()
@@ -131,7 +127,6 @@ public class BoardGUI extends JFrame
     {
         try
         {
-            System.out.println("Current Player: " + currentPlayer.getName());
             this.getBoardLogic().dropPiece(col, currentPlayer.getDisc());
             
             Color colour = currentPlayer.getColour();
@@ -139,16 +134,17 @@ public class BoardGUI extends JFrame
             this.colHeight[col]++; // increment the height of the column
             this.printBoard(); 
             
-            this.switchPlayers();
-            
-            
-            if(this.isBoardFull())
+            if(this.isConnectFour())
             {
                 this.stopGame();
             }
             
+            if(this.gameRunning)
+            {
+                this.switchPlayers();
+            }
             
-            
+  
         } catch (ArrayIndexOutOfBoundsException e) {
             // add code to make player retry move
             System.out.println("Try again...");
@@ -157,6 +153,8 @@ public class BoardGUI extends JFrame
     
     private void switchPlayers() 
     {
+        // Swaps the current player
+        
         if (currentPlayer == player1) 
         {
             currentPlayer = player2;
@@ -166,32 +164,7 @@ public class BoardGUI extends JFrame
             currentPlayer = player1;
         }
     }
-    
-    public boolean isColFull(int col)
-    {
-        // Checks colHeight array at index x and returns true if it is full
-        
-        if(this.getColHeight()[col] < this.COLS - 1)
-        {
-            return false;
-        }
-        return true;
-    }
-    
-    public boolean isBoardFull()
-    {
-        // Returns true if the board is full 
-
-        for(int i = 0; i < COLS; i++)
-        {
-            if(!isColFull(i))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    
+     
     public void setScreenSize()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
@@ -203,4 +176,18 @@ public class BoardGUI extends JFrame
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
+    
+    public boolean isConnectFour()
+    {
+        return this.getBoardLogic().isConnectFour(player1, player2);
+    }
+    
+    public boolean isBoardFull()
+    {
+        return this.getBoardLogic().isBoardFull();
+    }
+       
+        
+    
+    
 }

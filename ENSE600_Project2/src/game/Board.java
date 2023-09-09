@@ -6,7 +6,10 @@
     ID: 21145343
 */
 
-package packages;
+package game;
+
+import packages.Disc;
+
 
 public final class Board
 {
@@ -97,7 +100,7 @@ public final class Board
     {
         // Checks colHeight array at index x and returns true if it is full
         
-        if(this.getColHeight()[row] == this.COLS)
+        if(this.getColHeight()[row] == this.ROWS)
         {
             System.out.println("Row Full");
             return true;
@@ -120,6 +123,8 @@ public final class Board
             }
         }
         
+        System.out.println("Board Full");
+        
         return true;
     }
     
@@ -135,6 +140,11 @@ public final class Board
         // Returns true if specified disc occurs 4 times consecutively
         
         return (horizontalWin(disc) || verticalWin(disc) || forwardDiagonalWin(disc) || backwardDiagonalWin(disc));
+    }
+    
+    public boolean isConnectFour(Player player1, Player player2)
+    {
+        return isConnectFour(player1.getDisc()) || isConnectFour(player2.getDisc());
     }
     
     public boolean horizontalWin(Disc disc)

@@ -8,6 +8,7 @@
 
 package packages;
 
+import game.Board;
 import java.util.Scanner;
 
 public class UserInput 
