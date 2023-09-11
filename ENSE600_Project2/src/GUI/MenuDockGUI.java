@@ -1,44 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package GUI;
 
-import GUI.Colours;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import GUI.Buttons.*;
+import java.awt.*;
+import javax.swing.*;
 
 public class MenuDockGUI extends JPanel
 {
     private static final Color BACKGROUND = new Color(93, 139, 186);
     
+    private int width = 280;
+    private int height = 80;
+    
+    private int buttonSize = 50;
+    
     public MenuDockGUI(GameGUI board)
     {
-        setLayout(new BorderLayout());
-        setPreferredSize(new Dimension(300, 200));
+        setLayout(new FlowLayout(FlowLayout.CENTER, 40, (height / 2) - (buttonSize / 2)));
+        setPreferredSize(new Dimension(width, height));
         setBackground(BACKGROUND);
-        setVisible(true);
         
-        add(new ReplayButton(board));
+        add(new ReplayButton(board, buttonSize));
+        add(new HomeButton(board, buttonSize));
+        add(new ExitButton(board, buttonSize));
+        
+        setVisible(true);
     }
     
     @Override
-    public void paintComponent(Graphics g) {
-        // Paints the button to be a blue square with a circle in the middle
+    public void paintComponent(Graphics g) 
+    {
+        super.paintComponent(g);
+        
+        int width = getWidth();
+        int height = getHeight();
 
-        int width = getWidth();  // Get the width of the component
-        int height = getHeight(); // Get the height of the component
-
-        int arcWidth = 50; // Adjust the arc width for the rounded edges
+        int arcWidth = 80; 
 
         g.setColor(Colours.BLUE.getColour());
-        g.fillRoundRect(0, 0, 300, 60, arcWidth, arcWidth); // Fill the rounded rectangle
+        g.fillRoundRect(0, 0, width, height, height, height);
 
-    }
-      
+    }   
 }
