@@ -6,7 +6,7 @@
     ID: 21145343
 */
 
-package GUI.Test;
+package GUI;
 
 import game.*;
 import packages.Disc;

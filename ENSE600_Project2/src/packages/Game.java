@@ -9,7 +9,7 @@
 package packages;
 
 import game.Board;
-import GUI.BoardGUI;
+//import GUI.BoardGUI;
 
 public class Game
 {
@@ -24,7 +24,7 @@ public class Game
     
     protected UserInput userInput;
     
-    protected BoardGUI boardGUI;
+    //protected BoardGUI boardGUI;
     
     public Game()
     {
@@ -77,7 +77,7 @@ public class Game
         
         this.board = new Board();
         
-        this.boardGUI = new BoardGUI();
+        //this.boardGUI = new BoardGUI();
                 
         this.setCurrentPlayer(Player.getCurrentPlayer(getPlayer1(), getPlayer2()));
 
