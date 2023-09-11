@@ -2,7 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package GUI;
+package GUI.Test;
+
+import game.Game;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 /**
  *
@@ -17,6 +21,7 @@ public class MainMenuGUI extends javax.swing.JFrame
     public MainMenuGUI()
     {
         initComponents();
+        this.setScreenSize();
     }
 
     /**
@@ -55,6 +60,13 @@ public class MainMenuGUI extends javax.swing.JFrame
         setBackground(new java.awt.Color(0, 0, 153));
 
         twoPlayerButton.setText("Two Player Mode");
+        twoPlayerButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                twoPlayerButtonActionPerformed(evt);
+            }
+        });
 
         highScoreButton.setText("Highscore");
 
@@ -110,6 +122,26 @@ public class MainMenuGUI extends javax.swing.JFrame
         System.exit(0);
     }//GEN-LAST:event_exitButtonActionPerformed
 
+    private void twoPlayerButtonActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_twoPlayerButtonActionPerformed
+    {//GEN-HEADEREND:event_twoPlayerButtonActionPerformed
+        
+        GameGUI game = new GameGUI();
+        //game.play();
+        this.dispose();
+    }//GEN-LAST:event_twoPlayerButtonActionPerformed
+    
+    public void setScreenSize()
+    {
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        //int screenWidth = screenSize.width;
+        //int screenHeight = screenSize.height;
+        //int frameWidth = screenWidth / 2 + 200;
+        //int frameHeight = screenHeight / 2 + 200;
+        //this.setSize(frameWidth, frameHeight);
+        this.setLocationRelativeTo(null);
+    }
+    
     /**
      * @param args the command line arguments
      */

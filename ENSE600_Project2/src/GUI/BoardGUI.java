@@ -1,7 +1,6 @@
 package GUI;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -30,6 +29,8 @@ public class BoardGUI extends JFrame
     private JPanel boardGrid;
     private BoardSlot[][] boardSlots;
     
+    private JPanel leftPanel;
+    private JPanel rightPanel;
     
     private int[] colHeight;
     
@@ -39,11 +40,21 @@ public class BoardGUI extends JFrame
     {
         setTitle("Connect Four! - Two Player Mode");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        getContentPane().setBackground(BACKGROUND);
+        //setVisible(true);
+        getContentPane().setBackground(Colours.BLUE.getColour());
+        setResizable(false);
+        
+        //this.setLayout(new BorderLayout()); // Use BorderLayout for the main layout
 
+        
+        
+        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20));
+        
         this.boardGrid = new JPanel(new GridLayout(ROWS, COLS));
         this.boardSlots = new BoardSlot[ROWS][COLS];
+        
+        
+        this.initialiseBoard();
                 
         this.colHeight = new int[COLS];
         
@@ -52,9 +63,7 @@ public class BoardGUI extends JFrame
         this.boardLogic = new Board();
         
         this.setScreenSize();
-                
-        this.initialiseBoard();
-        
+                 
         this.printBoard();
     }
     
@@ -110,9 +119,9 @@ public class BoardGUI extends JFrame
     {
         // Print the board slots in a 6x7 grid
 
-        Container container = getContentPane();
+        //Container container = getContentPane();
         
-        container.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
+        //container.setLayout(new BorderLayout());
         
         for(int i = ROWS - 1; i >= 0; i--)
         {
@@ -122,9 +131,9 @@ public class BoardGUI extends JFrame
             }
         }
         
-        //container.add(this.board, BorderLayout.CENTER);
+        //container.add(this.boardGrid, BorderLayout.CENTER);
         
-        container.add(this.boardGrid);
+        this.add(this.boardGrid);
         setVisible(true);
     }
     
@@ -185,8 +194,9 @@ public class BoardGUI extends JFrame
         Dimension screenSize = kit.getScreenSize();
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
-        int frameWidth = screenWidth / 2 + 200;
-        int frameHeight = screenHeight / 2 + 200;
+        //int frameWidth = screenWidth / 2 + 25;
+        int frameWidth = screenWidth / 2 + 400;
+        int frameHeight = screenHeight / 2 + 290;
         this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
