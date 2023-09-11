@@ -1,16 +1,8 @@
 package GUI;
 
-import GUI.Colours;
 import game.Player;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import packages.Disc;
+import java.awt.*;
+import javax.swing.*;
 
 public class GameGUI extends JFrame
 {
@@ -56,10 +48,6 @@ public class GameGUI extends JFrame
     public void resetBoard()
     {
         this.board.resetBoard();
-        //this.board = new BoardGridGUI(this);
-        //this.display();
-        //System.out.println("Bruhh");
-        //repaint();
     }
     
     public static void main(String[] args)

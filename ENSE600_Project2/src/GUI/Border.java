@@ -1,13 +1,7 @@
 package GUI;
 
-import GUI.Colours;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.Graphics;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 
 public class Border extends JPanel
 {
@@ -21,15 +15,14 @@ public class Border extends JPanel
     }
     
     @Override
-    public void paintComponent(Graphics g) {
-        // Paints the button to be a blue square with a circle in the middle
+    public void paintComponent(Graphics g) 
+    {
+        int width = getWidth();  
+        int height = getHeight();
 
-        int width = getWidth();  // Get the width of the component
-        int height = getHeight(); // Get the height of the component
-
-        int arcWidth = 50; // Adjust the arc width for the rounded edges
+        int arcWidth = 50; 
 
         g.setColor(Colours.BLUE.getColour());
-        g.fillRoundRect(0, 0, width, height, arcWidth, arcWidth); // Fill the rounded rectangle
+        g.fillRoundRect(0, 0, width, height, arcWidth, arcWidth);
     }
 }

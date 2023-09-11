@@ -4,9 +4,7 @@
  */
 package GUI;
 
-//mport game.Game;
-import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.*;
 
 /**
  *

@@ -1,13 +1,8 @@
 package GUI;
 
-import GUI.Colours;
 import game.Player;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import java.awt.*;
+import javax.swing.*;
 import packages.Disc;
 
 public class BoardGridGUI extends JPanel
@@ -37,14 +32,6 @@ public class BoardGridGUI extends JPanel
         
         setLayout(new GridLayout(ROWS, COLS, 0, 0));
         setPreferredSize(new Dimension(700, 600));
-                
-        JPanel blackBackground = new JPanel();
-        blackBackground.setBackground(Color.BLACK); // Set the background color to black
-        blackBackground.setLayout(new BorderLayout()); // Use BorderLayout to center your board
-
-        // Add your BoardGridGUI to the black background panel
-        blackBackground.add(this, BorderLayout.CENTER);
-        frame.add(blackBackground);
         
         initialiseBoard();
         
@@ -120,11 +107,6 @@ public class BoardGridGUI extends JPanel
         
         setVisible(true);
     }
-    
-//    public void dropPiece(int col)
-//    {
-//        System.out.println(col);
-//    }
     
     public void dropPiece(int col)
     {
