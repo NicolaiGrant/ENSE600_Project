@@ -6,15 +6,18 @@ import javax.swing.*;
 
 public class CurrentPlayerGUI extends JPanel
 {
-    private Player currentPlayer;
+    private Player player;
     private Color colour;
     
     private final int SIZE = 100;
     
-    public CurrentPlayerGUI(Player currentPlayer)
+    String playerName;
+    
+    public CurrentPlayerGUI(Player player)
     {
-        this.currentPlayer = currentPlayer;
-        this.colour = currentPlayer.getColour();
+        this.player = player;
+        this.playerName = player.getName();
+        this.colour = player.getColour();
         
         setLayout(new BorderLayout());
         //setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
@@ -28,7 +31,7 @@ public class CurrentPlayerGUI extends JPanel
     {
         return this.colour;
     }
-    
+        
     @Override
     public void paintComponent(Graphics g) 
     {
@@ -47,7 +50,7 @@ public class CurrentPlayerGUI extends JPanel
         g.setColor(this.getColour());
         g.fillOval(circleX, circleY, circleSize, circleSize);
         
-        String label = currentPlayer.getName();
+        String label = this.playerName;
         g.setColor(Color.WHITE); 
         Font originalFont = g.getFont();
         Font labelFont = new Font(originalFont.getName(), Font.BOLD, 30);

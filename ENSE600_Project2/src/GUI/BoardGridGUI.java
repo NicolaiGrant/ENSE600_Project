@@ -1,5 +1,6 @@
 package GUI;
 
+import game.Board;
 import game.Player;
 import java.awt.*;
 import javax.swing.*;
@@ -10,9 +11,12 @@ public class BoardGridGUI extends JPanel
     private static final int ROWS = 6;
     private static final int COLS = 7;
     
-    private Player player1 = new Player("Player 1", Colours.RED.getColour(), Disc.RED);
-    private Player player2 = new Player("Player 2", Colours.YELLOW.getColour(), Disc.YELLOW);
+    //private Player player1 = new Player("Player 1", Colours.RED.getColour(), Disc.RED);
+    //private Player player2 = new Player("Player 2", Colours.YELLOW.getColour(), Disc.YELLOW);
     
+    private Player player1;
+    private Player player2;
+            
     private int[] colHeight;
     
     private Player currentPlayer;
@@ -23,15 +27,18 @@ public class BoardGridGUI extends JPanel
     
     private Board boardLogic;
     
-    private JFrame frame;
+    private GameGUI game;
     
     
-    public BoardGridGUI(JFrame frame)
+    public BoardGridGUI(GameGUI game)
     {
-        this.frame = frame;
+        this.game = game;
         
         setLayout(new GridLayout(ROWS, COLS, 0, 0));
         setPreferredSize(new Dimension(700, 600));
+        
+        this.player1 = new Player(game.getPlayer1().getName(), Colours.RED.getColour(), Disc.RED);
+        this.player2 = new Player(game.getPlayer2().getName(), Colours.YELLOW.getColour(), Disc.YELLOW);
         
         initialiseBoard();
         
@@ -69,7 +76,7 @@ public class BoardGridGUI extends JPanel
         this.gameRunning = true;
         this.currentPlayer = this.player1;
 
-        frame.setTitle("Connect Four! - Two Player Mode");
+        game.setTitle("Connect Four! - Two Player Mode");
 
         revalidate();
         repaint();
@@ -83,7 +90,7 @@ public class BoardGridGUI extends JPanel
         this.boardSlots = new BoardButton[ROWS][COLS];
         this.colHeight = new int[COLS];
         
-        this.gameRunning = true;
+        this.gameRunning = false;
         this.currentPlayer = this.player1;
         
         for(int row = 0; row < ROWS; row++)
@@ -119,17 +126,17 @@ public class BoardGridGUI extends JPanel
             this.colHeight[col]++; // increment the height of the column
             this.printBoard(); 
             
-            frame.setTitle(this.currentPlayer.getName() + " Move");
+            game.setTitle(this.currentPlayer.getName() + " Move");
             
             if(this.isConnectFour())
             {
-                frame.setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
+                game.setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
                 this.stopGame();
             }
             
             else if(this.isBoardFull())
             {
-                frame.setTitle("Game Over! Board is Full!");
+                game.setTitle("Game Over! Board is Full!");
                 this.stopGame();
             }                  
             
@@ -144,7 +151,7 @@ public class BoardGridGUI extends JPanel
             System.out.println("Try again...");
         }  
     }
-    
+        
     private void switchPlayers() 
     {
         // Swaps the current player

@@ -124,7 +124,10 @@ public class MainMenuGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_twoPlayerButtonActionPerformed
         
         GameGUI game = new GameGUI();
-        //game.play();
+        //game.setVisible(false);
+        
+        PlayerInputGUI playerInput = new PlayerInputGUI(this, game);
+        
         this.dispose();
     }//GEN-LAST:event_twoPlayerButtonActionPerformed
     
