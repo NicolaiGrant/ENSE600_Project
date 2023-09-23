@@ -42,7 +42,11 @@ public class PlayerInputGUI extends JDialog
                 GameGUI newGame = new GameGUI(player1Name, player2Name);
                 newGame.getBoard().startGame();
                 
-                //board.assignPlayers(player1Name, player2Name);
+                board.assignPlayers(player1Name, player2Name);
+                
+                //board.display();
+                
+                //board.repaint();
                 
                 //board.getBoard().startGame();
                 

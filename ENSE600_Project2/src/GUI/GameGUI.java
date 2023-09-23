@@ -22,8 +22,9 @@ public class GameGUI extends JFrame
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         getContentPane().setBackground(BACKGROUND);
-        this.setScreenSize();        
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
+        setScreenSize();        
+        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
+        
         
         this.player1 = new Player("", Colours.RED.getColour());
         this.player2 = new Player("", Colours.YELLOW.getColour());
@@ -83,11 +84,12 @@ public class GameGUI extends JFrame
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
+        setResizable(false);
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
-        int frameWidth = screenWidth / 2 + 600;
+        int frameWidth = screenWidth / 2 + 300;
         int frameHeight = screenHeight / 2 + 200;
-        this.setSize(screenWidth, screenHeight);
+        this.setSize(frameWidth, frameHeight);
         this.setLocationRelativeTo(null);
     }
     
@@ -122,6 +124,8 @@ public class GameGUI extends JFrame
 
         repaint();
         revalidate();
+        //dispose();
+        //display();
         
         System.out.println("Player1: " + this.player1.getName());
         System.out.println("Player2: " + this.player2.getName());

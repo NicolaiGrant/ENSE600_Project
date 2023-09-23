@@ -10,10 +10,7 @@ public class BoardGridGUI extends JPanel
 {
     private static final int ROWS = 6;
     private static final int COLS = 7;
-    
-    //private Player player1 = new Player("Player 1", Colours.RED.getColour(), Disc.RED);
-    //private Player player2 = new Player("Player 2", Colours.YELLOW.getColour(), Disc.YELLOW);
-    
+
     private Player player1;
     private Player player2;
             
@@ -26,7 +23,7 @@ public class BoardGridGUI extends JPanel
     private BoardButton[][] boardSlots;
     
     private Board boardLogic;
-    
+
     private GameGUI game;
     
     
@@ -67,7 +64,6 @@ public class BoardGridGUI extends JPanel
     
     public void resetBoard() 
     {
-        
         removeAll();
         initialiseBoard();
         
@@ -86,6 +82,7 @@ public class BoardGridGUI extends JPanel
     public void initialiseBoard()
     {
         // Initialises the board with empty board slot objects in a 6x7 array
+        
         this.boardLogic = new Board();
         this.boardSlots = new BoardButton[ROWS][COLS];
         this.colHeight = new int[COLS];
@@ -104,6 +101,8 @@ public class BoardGridGUI extends JPanel
     
     public void printBoard()
     {
+        // Adds the board buttons to the JPanel in the 6x7 grid
+        
         for(int i = ROWS - 1; i >= 0; i--)
         {
             for(int j = 0; j < COLS; j++)

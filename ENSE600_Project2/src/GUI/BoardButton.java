@@ -18,7 +18,9 @@ public class BoardButton extends JButton
     {
         setPreferredSize(new Dimension(SIZE, SIZE));
         setBorderPainted(true);
+        setBorder(null);
         setContentAreaFilled(false);
+        setFocusable(false);
         
         this.board = board;
         
@@ -48,7 +50,7 @@ public class BoardButton extends JButton
     public void mouseHover()
     {
         // Adds a border around the slots when hovered over with the mouse
-        
+
         addMouseListener(new MouseAdapter() 
         {         
             @Override
@@ -56,6 +58,7 @@ public class BoardButton extends JButton
             {
                 if(board.isGameRunning())
                 {
+                    
                     setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
                 } 
             }

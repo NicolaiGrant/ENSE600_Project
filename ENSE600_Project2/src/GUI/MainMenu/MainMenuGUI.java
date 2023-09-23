@@ -30,8 +30,9 @@ public class MainMenuGUI extends javax.swing.JFrame {
         int screenHeight = screenSize.height;
         int frameWidth = screenWidth / 2 + 200;
         int frameHeight = screenHeight / 2 + 200;
-        this.setSize(frameWidth, frameHeight);
-        this.setLocationRelativeTo(null);
+        setSize(frameWidth, frameHeight);
+        setLocationRelativeTo(null);
+        setAlwaysOnTop(true);
         setVisible(true);
     }
 
@@ -46,6 +47,9 @@ public class MainMenuGUI extends javax.swing.JFrame {
 
         userInput = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -56,33 +60,68 @@ public class MainMenuGUI extends javax.swing.JFrame {
         userInput.setLocation(new java.awt.Point(0, 0));
         userInput.setName("playerInput"); // NOI18N
         userInput.setResizable(false);
-        userInput.setSize(new java.awt.Dimension(911, 585));
+        userInput.setSize(new java.awt.Dimension(555, 411));
         userInput.setLocationRelativeTo(null);
+        userInput.setUndecorated(true);
+        userInput.setAlwaysOnTop(true);
 
         jPanel2.setBackground(new java.awt.Color(93, 139, 186));
+
+        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField1.setText("Player1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField2.setText("Player2");
+
+        jButton5.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        jButton5.setText("Start");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButton(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 911, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(122, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextField2)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(118, 118, 118))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(176, 176, 176)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 585, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(126, Short.MAX_VALUE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
         );
 
         javax.swing.GroupLayout userInputLayout = new javax.swing.GroupLayout(userInput.getContentPane());
         userInput.getContentPane().setLayout(userInputLayout);
         userInputLayout.setHorizontalGroup(
             userInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(userInputLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         userInputLayout.setVerticalGroup(
             userInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -92,7 +131,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(93, 139, 186));
 
         jButton2.setBackground(new java.awt.Color(102, 153, 204));
-        jButton2.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+        jButton2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Two Player Mode");
         jButton2.setBorder(null);
@@ -109,7 +148,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         });
 
         jButton1.setBackground(new java.awt.Color(102, 153, 204));
-        jButton1.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+        jButton1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Leaderboard");
         jButton1.setBorder(null);
@@ -125,7 +164,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         });
 
         jButton3.setBackground(new java.awt.Color(102, 153, 204));
-        jButton3.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+        jButton3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Exit");
         jButton3.setBorder(null);
@@ -141,7 +180,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
         });
 
         jButton4.setBackground(new java.awt.Color(102, 153, 204));
-        jButton4.setFont(new java.awt.Font("Bauhaus 93", 0, 18)); // NOI18N
+        jButton4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setText("Play vs Computer");
         jButton4.setBorder(null);
@@ -156,7 +195,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Bauhaus 93", 0, 72)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 80)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Connect Four");
@@ -210,12 +249,8 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void twoPlayerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoPlayerButton
+        setAlwaysOnTop(false);
         userInput.setVisible(true);
-        //userInput.setLocationRelativeTo(null);
-        
-//        GameGUI game = new GameGUI();
-//        game.getBoard().startGame();
-//        dispose();
     }//GEN-LAST:event_twoPlayerButton
 
     private void leaderboardButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardButton
@@ -231,6 +266,21 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private void computerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerButton
         // TODO add your handling code here:
     }//GEN-LAST:event_computerButton
+
+    private void startButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton
+        String player1Name = jTextField1.getText();
+        String player2Name = jTextField2.getText();
+        
+        userInput.dispose();
+        dispose();
+        GameGUI game = new GameGUI(player1Name, player2Name);
+        game.getBoard().startGame();
+        
+    }//GEN-LAST:event_startButton
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -272,9 +322,12 @@ public class MainMenuGUI extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JDialog userInput;
     // End of variables declaration//GEN-END:variables
 }
