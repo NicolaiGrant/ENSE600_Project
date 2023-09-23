@@ -23,10 +23,10 @@ public class ReplayButton extends MenuButton
         });
     }
     
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        g.setColor(Color.WHITE);
-        g.fillOval(0, 0, buttonSize, buttonSize);
-    }
+//    @Override
+//    public void paintComponent(Graphics g)
+//    {
+//        g.setColor(Color.WHITE);
+//        g.fillOval(0, 0, buttonSize, buttonSize);
+//    }
 }

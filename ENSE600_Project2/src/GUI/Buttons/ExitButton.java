@@ -21,11 +21,11 @@ public class ExitButton extends MenuButton
             }
         });
     }
-    
-    @Override
-    public void paintComponent(Graphics g)
-    {
-        g.setColor(Color.YELLOW);
-        g.fillOval(0, 0, buttonSize, buttonSize);
-    }
+//    
+//    @Override
+//    public void paintComponent(Graphics g)
+//    {
+//        g.setColor(Color.YELLOW);
+//        g.fillOval(0, 0, buttonSize, buttonSize);
+//    }
 }

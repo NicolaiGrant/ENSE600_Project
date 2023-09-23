@@ -2,7 +2,6 @@ package GUI.Buttons;
 
 import GUI.GameGUI;
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
 public abstract class MenuButton extends JButton
@@ -15,7 +14,9 @@ public abstract class MenuButton extends JButton
     {
         this.board = board;
         this.buttonSize = buttonSize;
+        setBorderPainted(false);
+        setFocusPainted(false);
+        setBorder(null);
         setPreferredSize(new Dimension(this.buttonSize, this.buttonSize));      
     }
-
 }

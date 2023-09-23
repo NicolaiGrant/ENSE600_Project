@@ -5,6 +5,8 @@ import javax.swing.*;
 
 public class Border extends JPanel
 {
+    // JPanel class used to put a rounded edge rectangular border around the gameboard
+    
     public Border()
     {
         this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 25));
