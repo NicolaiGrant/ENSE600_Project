@@ -13,9 +13,9 @@ public class Bot extends Player
     Random random;
     String name;
     
-    public Bot(Color colour)
+    public Bot()
     {
-        super("Bot", colour);
+        super("Bot");
         this.random = new Random();
         this.name = "Bot";
     }

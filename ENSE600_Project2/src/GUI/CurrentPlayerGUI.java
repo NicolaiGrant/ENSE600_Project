@@ -50,13 +50,26 @@ public class CurrentPlayerGUI extends JPanel
         g.setColor(this.getColour());
         g.fillOval(circleX, circleY, circleSize, circleSize);
         
-        String label = this.playerName;
+        String nameLabel = this.playerName;
         g.setColor(Color.WHITE); 
         Font originalFont = g.getFont();
         Font labelFont = new Font(originalFont.getName(), Font.BOLD, 30);
         g.setFont(labelFont);
-        int labelX = (width - g.getFontMetrics().stringWidth(label)) / 2; 
+        int labelX = (width - g.getFontMetrics().stringWidth(nameLabel)) / 2; 
         int labelY = circleY - 20; 
-        g.drawString(label, labelX, labelY);
+        g.drawString(nameLabel, labelX, labelY);
+        
+        
+        String yourTurn = "";
+                
+        if(player.isTurn())
+        {
+            yourTurn = "Your Turn";
+            System.out.println(player.getName() + " " + player.isTurn());
+        }
+        
+        int turnX = (width - g.getFontMetrics().stringWidth(yourTurn)) / 2;;
+        int turnY = circleY + circleSize + 60; 
+        g.drawString(yourTurn, turnX, turnY);
     }
 }

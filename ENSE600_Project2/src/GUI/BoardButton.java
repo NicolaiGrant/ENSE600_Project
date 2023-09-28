@@ -1,5 +1,6 @@
 package GUI;
 
+import game.Game;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -12,9 +13,9 @@ public class BoardButton extends JButton
     
     private int column;
     
-    private BoardGridGUI board;
+    private Game game;
     
-    public BoardButton(BoardGridGUI board, int column)
+    public BoardButton(Game game, int column)
     {
         setPreferredSize(new Dimension(SIZE, SIZE));
         setBorderPainted(true);
@@ -22,7 +23,7 @@ public class BoardButton extends JButton
         setContentAreaFilled(false);
         setFocusable(false);
         
-        this.board = board;
+        this.game = game;
         
         this.column = column;
         
@@ -56,7 +57,7 @@ public class BoardButton extends JButton
             @Override
             public void mouseEntered(MouseEvent e) 
             {
-                if(board.isGameRunning())
+                if(game.getBoardGUI().isGameRunning())
                 {
                     
                     setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
@@ -81,9 +82,10 @@ public class BoardButton extends JButton
             @Override
             public void mousePressed(MouseEvent e) 
             {
-                if(board.isGameRunning())
+                if(game.getBoardGUI().isGameRunning())
                 {           
-                    board.dropPiece(column);
+                    //game.getBoardGUI().dropPiece(column);
+                    game.dropPiece(column);
                 }
             }
         });             

@@ -1,5 +1,7 @@
 package GUI;
 
+import game.Bot;
+import game.Game;
 import game.Player;
 import java.awt.*;
 import javax.swing.*;
@@ -8,6 +10,7 @@ public class GameGUI extends JFrame
 {
     private static final Color BACKGROUND = new Color(93, 139, 186);
     
+    private Game game;
     private BoardGridGUI board;
     
     private CurrentPlayerGUI player1Panel;
@@ -16,48 +19,71 @@ public class GameGUI extends JFrame
     private Player player1;
     private Player player2;
     
-    public GameGUI()
+    
+    public GameGUI(Game game)
     {
-        setTitle("Connect Four! - Two Player Mode");
+        //setTitle("Connect Four! - Two Player Mode");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         getContentPane().setBackground(BACKGROUND);
         setScreenSize();        
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
         
+        this.game = game;
         
-        this.player1 = new Player("", Colours.RED.getColour());
-        this.player2 = new Player("", Colours.YELLOW.getColour());
+        this.player1 = game.getPlayer1();
+        this.player2 = game.getPlayer2();
         
         this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
         this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
         
-        this.display();
+        display();
     }
     
-    public GameGUI(String player1Name, String player2Name)
+//    public GameGUI(String player1Name, String player2Name)
+//    {
+//        //setTitle("Connect Four! - Two Player Mode");
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setVisible(true);
+//        getContentPane().setBackground(BACKGROUND);
+//        setScreenSize();        
+//        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
+//        
+//        this.player1 = new Player(player1Name, Colours.RED.getColour());
+//        this.player2 = new Player(player2Name, Colours.YELLOW.getColour());
+//        
+//        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
+//        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
+//        
+//        display();
+//    }
+//
+//    public GameGUI(String player1Name) 
+//    {
+//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        setVisible(true);
+//        getContentPane().setBackground(BACKGROUND);
+//        setScreenSize();        
+//        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
+//        
+//        this.player1 = new Player(player1Name, Colours.RED.getColour());
+//        this.player2 = new Bot(Colours.RED.getColour());
+//        
+//        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
+//        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
+//        
+//        display();
+//    }
+    
+    public Game getGame()
     {
-        //setTitle("Connect Four! - Two Player Mode");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
-        getContentPane().setBackground(BACKGROUND);
-        this.setScreenSize();        
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
-        
-        this.player1 = new Player(player1Name, Colours.RED.getColour());
-        this.player2 = new Player(player2Name, Colours.YELLOW.getColour());
-        
-        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
-        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
-        
-        this.display();
+        return this.game;
     }
-    
-    
     
     public BoardGridGUI getBoard()
     {
-        return this.board;
+        //return this.board;
+        return game.getBoardGUI();
     }
     
     public Player getPlayer1()
@@ -84,58 +110,33 @@ public class GameGUI extends JFrame
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        setResizable(false);
+        setResizable(true);
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
         int frameWidth = screenWidth / 2 + 300;
         int frameHeight = screenHeight / 2 + 200;
-        this.setSize(frameWidth, frameHeight);
-        this.setLocationRelativeTo(null);
+        setSize(frameWidth, frameHeight);
+        setLocationRelativeTo(null);
     }
     
     public void display()
     {
-        //this.add(new CurrentPlayerGUI(new Player("Player1", Colours.RED.getColour())), BorderLayout.WEST);
-        this.add(this.getPlayer1Panel(), BorderLayout.WEST);
-        this.add(new Spacer(50, 1));
-        this.board = new BoardGridGUI(this);
-        this.add(new MiddlePanelGUI(this, board));
-        this.add(new Spacer(50, 1));
+        //this.add(new CurrentPlayerGUI(new Player(this.getPlayer1().getName(), Colours.RED.getColour())), BorderLayout.WEST);
+        add(this.getPlayer1Panel(), BorderLayout.WEST);
+        add(new Spacer(50, 1));
+        game.setBoardGUI(new BoardGridGUI(getGame()));
+        //board = new BoardGridGUI(this);
+        //add(new MiddlePanelGUI(this, board));
+        add(new MiddlePanelGUI(this, game.getBoardGUI()));
+        add(new Spacer(50, 1));
         //this.add(new CurrentPlayerGUI(new Player("Player2", Colours.YELLOW.getColour())), BorderLayout.EAST);
-        this.add(this.getPlayer2Panel(), BorderLayout.EAST);
+        add(this.getPlayer2Panel(), BorderLayout.EAST);
         setVisible(true);
     }
     
     public void resetBoard()
     {
-        this.board.resetBoard();
-    }
-    
-    public void assignPlayers(String playerName1, String playerName2)
-    {
-        this.player1 = new Player(playerName1, Colours.RED.getColour());
-        this.player2 = new Player(playerName2, Colours.YELLOW.getColour());
-        
-        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
-        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
-        
-        getPlayer1Panel().repaint();
-        getPlayer2Panel().repaint();
-
-        repaint();
-        revalidate();
-        //dispose();
-        //display();
-        
-        System.out.println("Player1: " + this.player1.getName());
-        System.out.println("Player2: " + this.player2.getName());
-    }
-    
-    public static void main(String[] args)
-    {
-        GameGUI game = new GameGUI();
-    
-    }
+        //this.board.resetBoard();
+        game.getBoardGUI().resetBoard();
+    }   
 }
-
-

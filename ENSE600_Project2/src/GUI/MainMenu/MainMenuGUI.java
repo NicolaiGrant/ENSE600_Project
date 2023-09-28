@@ -5,6 +5,8 @@
 package GUI.MainMenu;
 
 import GUI.GameGUI;
+import GUI.Leaderboard.Leaderboard;
+import game.Game;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -12,17 +14,17 @@ import java.awt.Toolkit;
  *
  * @author RYZEN RTX
  */
-public class MainMenuGUI extends javax.swing.JFrame {
-
-    /**
-     * Creates new form MainMenuGUI
-     */
+public class MainMenuGUI extends javax.swing.JFrame 
+{
+    private Game game;
+    
     public MainMenuGUI() {
         initComponents();
         setScreenSize();
+        this.game = new Game(); 
     }
     
-     public void setScreenSize()
+    public void setScreenSize()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
@@ -44,6 +46,7 @@ public class MainMenuGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         userInput = new javax.swing.JDialog();
         jPanel2 = new javax.swing.JPanel();
@@ -127,8 +130,12 @@ public class MainMenuGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setBackground(new java.awt.Color(204, 204, 255));
+        setMinimumSize(new java.awt.Dimension(1480, 920));
 
         jPanel1.setBackground(new java.awt.Color(93, 139, 186));
+        jPanel1.setAlignmentX(0.0F);
+        jPanel1.setAlignmentY(0.0F);
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jButton2.setBackground(new java.awt.Color(102, 153, 204));
         jButton2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -146,6 +153,14 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 twoPlayerButton(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 125;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 621, 0, 0);
+        jPanel1.add(jButton2, gridBagConstraints);
 
         jButton1.setBackground(new java.awt.Color(102, 153, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -162,6 +177,14 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 leaderboardButton(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 163;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 621, 0, 0);
+        jPanel1.add(jButton1, gridBagConstraints);
 
         jButton3.setBackground(new java.awt.Color(102, 153, 204));
         jButton3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -178,6 +201,14 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 exitButton(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.ipadx = 236;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 621, 188, 0);
+        jPanel1.add(jButton3, gridBagConstraints);
 
         jButton4.setBackground(new java.awt.Color(102, 153, 204));
         jButton4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -194,55 +225,38 @@ public class MainMenuGUI extends javax.swing.JFrame {
                 computerButton(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 122;
+        gridBagConstraints.ipady = 36;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(105, 621, 0, 0);
+        jPanel1.add(jButton4, gridBagConstraints);
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 80)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Connect Four");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(434, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(594, 594, 594))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 646, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(400, 400, 400))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(188, 188, 188))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 264;
+        gridBagConstraints.ipady = 28;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(218, 434, 0, 400);
+        jPanel1.add(jLabel1, gridBagConstraints);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -254,7 +268,8 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_twoPlayerButton
 
     private void leaderboardButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardButton
-        // TODO add your handling code here:
+        dispose();
+        new Leaderboard();
     }//GEN-LAST:event_leaderboardButton
 
     private void exitButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton
@@ -264,7 +279,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_exitButton
 
     private void computerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerButton
-        // TODO add your handling code here:
+        String player1Name = jTextField1.getText();
+        
+        dispose();
+//        GameGUI game = new GameGUI(player1Name);
+//        game.getBoard().startGame();
     }//GEN-LAST:event_computerButton
 
     private void startButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton
@@ -273,8 +292,11 @@ public class MainMenuGUI extends javax.swing.JFrame {
         
         userInput.dispose();
         dispose();
-        GameGUI game = new GameGUI(player1Name, player2Name);
-        game.getBoard().startGame();
+//        GameGUI game = new GameGUI(player1Name, player2Name);
+//        game.getBoard().startGame();
+        
+        game.assignPlayers(player1Name, player2Name);
+        game.play();
         
     }//GEN-LAST:event_startButton
 
