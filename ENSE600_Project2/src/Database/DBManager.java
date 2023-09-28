@@ -6,17 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class LeaderboardDatabase 
+public class DBManager 
 {
     private static final String USER_NAME = "pdc"; //your DB username
     private static final String PASSWORD = "pdc"; //your DB password
-    private static final String URL = "jdbc:derby:BookStoreDB_Ebd; create=true";  //url of the DB host
+    private static final String URL = "jdbc:derby:LeaderboardDB_Ebd; create=true";  //url of the DB host
 
     Connection conn;
     
-    public LeaderboardDatabase()
+    public DBManager()
     {
         establishConnection();
+    }
+    
+    public Connection getConnection() {
+        return this.conn;
     }
     
     public void establishConnection() 
@@ -82,5 +86,11 @@ public class LeaderboardDatabase
         {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public static void main(String[] args) 
+    {
+        DBManager dbManager = new DBManager();
+        System.out.println(dbManager.getConnection());
     }
 }
