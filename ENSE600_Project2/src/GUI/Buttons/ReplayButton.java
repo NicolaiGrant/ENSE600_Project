@@ -1,24 +1,24 @@
 package GUI.Buttons;
 
 import GUI.GameGUI;
+import game.Game;
 import java.awt.*;
 import java.awt.event.*;
 
 public class ReplayButton extends MenuButton
 {
-    public ReplayButton(GameGUI board, int buttonSize)
+    public ReplayButton(Game game, int buttonSize)
     {
-        super(board, buttonSize);
+        super(game, buttonSize);
         setText("Replay");
-        
-        //this.SIZE = buttonSize;
-        
+
         addActionListener(new ActionListener() 
         {
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                board.resetBoard();
+                game.switchPlayers();
+                game.getBoardGUI().resetBoard();  
             }
         });
     }

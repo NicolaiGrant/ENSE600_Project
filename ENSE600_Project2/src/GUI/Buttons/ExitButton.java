@@ -1,14 +1,13 @@
 package GUI.Buttons;
 
-import GUI.GameGUI;
-import java.awt.*;
+import game.Game;
 import java.awt.event.*;
 
 public class ExitButton extends MenuButton
 {
-    public ExitButton(GameGUI board, int buttonSize)
+    public ExitButton(Game game, int buttonSize)
     {
-        super(board, buttonSize);
+        super(game, buttonSize);
         setText("Exit");
         
         addActionListener(new ActionListener() 
@@ -16,8 +15,8 @@ public class ExitButton extends MenuButton
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                board.dispose();
-                System.exit(0);
+                game.getGameGUI().dispose();
+                game.exit();
             }
         });
     }

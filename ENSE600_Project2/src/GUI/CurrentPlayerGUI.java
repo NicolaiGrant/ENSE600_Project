@@ -31,6 +31,13 @@ public class CurrentPlayerGUI extends JPanel
     {
         return this.colour;
     }
+    
+    public void setColour(Color colour)
+    {
+        this.colour = colour;
+        repaint();
+        revalidate();
+    }
         
     @Override
     public void paintComponent(Graphics g) 
@@ -47,7 +54,7 @@ public class CurrentPlayerGUI extends JPanel
         int circleX = (width - circleSize) / 2;     
         int circleY = (height - circleSize) / 2;      
 
-        g.setColor(this.getColour());
+        g.setColor(player.getColour());
         g.fillOval(circleX, circleY, circleSize, circleSize);
         
         String nameLabel = this.playerName;

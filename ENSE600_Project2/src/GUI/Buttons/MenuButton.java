@@ -1,6 +1,7 @@
 package GUI.Buttons;
 
 import GUI.GameGUI;
+import game.Game;
 import java.awt.*;
 import javax.swing.*;
 
@@ -8,11 +9,11 @@ public abstract class MenuButton extends JButton
 {
     protected int buttonSize;
     
-    private GameGUI board;
+    private Game game;
     
-    public MenuButton(GameGUI board, int buttonSize)
+    public MenuButton(Game game, int buttonSize)
     {
-        this.board = board;
+        this.game = game;
         this.buttonSize = buttonSize;
         setBorderPainted(false);
         setFocusPainted(false);

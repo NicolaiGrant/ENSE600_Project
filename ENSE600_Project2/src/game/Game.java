@@ -20,6 +20,8 @@ public class Game
     private Player currentPlayer;
     
     private boolean gameRunning;
+    
+    public static final Color BACKGROUND = new Color(93, 139, 186);
 
     public Game()
     {
@@ -45,6 +47,30 @@ public class Game
         }
     }
     
+    public void switchPlayers()
+    {
+        if(getPlayer1().getColour() == Colours.RED.getColour())
+        {
+            getPlayer2().setDisc(Disc.YELLOW);
+            getPlayer2().setColour(Colours.YELLOW.getColour());
+        }
+        else
+        {
+            getPlayer2().setDisc(Disc.RED);
+            getPlayer2().setColour(Colours.RED.getColour());
+        }
+    }
+    
+    public boolean isConnectFour()
+    {
+        return getBoardLogic().isConnectFour(player1, player2);
+    }
+    
+    public boolean isBoardFull()
+    {
+        return getBoardLogic().isBoardFull();
+    }
+    
     public Player getPlayer1()
     {
         return this.player1;
@@ -53,6 +79,16 @@ public class Game
     public Player getPlayer2()
     {
         return this.player2;
+    }
+    
+    public Player getCurrentPlayer()
+    {
+        return this.currentPlayer;
+    }
+    
+    public void setCurrentPlayer(Player currentPlayer)
+    {
+        this.currentPlayer = currentPlayer;
     }
     
     public Board getBoardLogic()
@@ -95,6 +131,7 @@ public class Game
     public void exit()
     {
         this.leaderboardDB.closeConnection();
+        System.exit(0);
     }
 
     public void dropPiece(int col)
@@ -114,14 +151,14 @@ public class Game
             
             getGameGUI().setTitle(this.currentPlayer.getName() + " Move");
             
-            if(getBoardGUI().isConnectFour())
+            if(isConnectFour())
             {
                 getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
                 new WinDialog(this.currentPlayer.getName());
                 getBoardGUI().stopGame();
             }
             
-            else if(getBoardGUI().isBoardFull())
+            else if(isBoardFull())
             {
                 getGameGUI().setTitle("Game Over! Board is Full!");
                 getBoardGUI().stopGame();
@@ -129,7 +166,7 @@ public class Game
             
             if(getBoardGUI().isGameRunning())
             {
-                switchPlayers();
+                changePlayerTurn();
             }
             
   
@@ -139,7 +176,7 @@ public class Game
         }  
     }
     
-    public void switchPlayers() 
+    public void changePlayerTurn() 
     {
         // Swaps the current player
         

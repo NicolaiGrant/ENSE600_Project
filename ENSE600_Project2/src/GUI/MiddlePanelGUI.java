@@ -1,5 +1,6 @@
 package GUI;
 
+import game.Game;
 import java.awt.*;
 import javax.swing.*;
 
@@ -7,12 +8,12 @@ public class MiddlePanelGUI extends JPanel
 {
     private static final Color BACKGROUND = new Color(93, 139, 186);
     
-    public MiddlePanelGUI(GameGUI frame, BoardGridGUI board) 
+    public MiddlePanelGUI(Game game) 
     {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
         Border background = new Border();
-        background.add(board, BorderLayout.CENTER);
+        background.add(game.getBoardGUI(), BorderLayout.CENTER);
         this.add(background);
         
         this.add(new Spacer(1, 20));
@@ -20,7 +21,7 @@ public class MiddlePanelGUI extends JPanel
         JPanel centeringPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         centeringPanel.setBackground(BACKGROUND);
         
-        MenuDockGUI menuDock = new MenuDockGUI(frame);
+        MenuDockGUI menuDock = new MenuDockGUI(game);
         centeringPanel.add(menuDock);
         add(centeringPanel);
 

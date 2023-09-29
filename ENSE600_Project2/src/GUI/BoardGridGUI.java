@@ -20,42 +20,18 @@ public class BoardGridGUI extends JPanel
     BoardButton[][] boardSlots;
     int[] colHeight;
     
-    private Player currentPlayer;
+//    private Player currentPlayer;
     
     private boolean gameRunning;
     
-    
-    
-    //private Board boardLogic;
 
-    //private GameGUI game;
-    
-    
-//    public BoardGridGUI(GameGUI game)
-//    {
-//        this.game = game;
-//        
-//        setLayout(new GridLayout(ROWS, COLS, 0, 0));
-//        setPreferredSize(new Dimension(700, 600));
-//        
-//        this.player1 = new Player(game.getPlayer1().getName(), Colours.RED.getColour(), Disc.RED);
-//        this.player2 = new Player(game.getPlayer2().getName(), Colours.YELLOW.getColour(), Disc.YELLOW);
-//        
-//        initialiseBoard();
-//        
-//        printBoard();
-//    }
-    
     public BoardGridGUI(Game game)
     {
         this.game = game;
         
         setLayout(new GridLayout(ROWS, COLS, 0, 0));
         setPreferredSize(new Dimension(700, 600));
-        
-        //this.player1 = new Player(game.getPlayer1().getName(), Colours.RED.getColour(), Disc.RED);
-        //this.player2 = new Player(game.getPlayer2().getName(), Colours.YELLOW.getColour(), Disc.YELLOW);
-        
+
         this.player1 = game.getPlayer1();
         this.player2 = game.getPlayer2();
         
@@ -97,8 +73,8 @@ public class BoardGridGUI extends JPanel
         printBoard();
 
         this.gameRunning = true;
-        this.currentPlayer = this.player1; // change this so its random
-        this.currentPlayer.startTurn();
+        //this.currentPlayer = this.player1; // change this so its random
+        //this.currentPlayer.startTurn();
 
         game.getGameGUI().setTitle("Connect Four! - Two Player Mode");
 
@@ -113,17 +89,17 @@ public class BoardGridGUI extends JPanel
         
         //this.boardLogic = new Board();
         game.setBoardLogic(new Board());
-        this.setBoardSlots(new BoardButton[ROWS][COLS]);
-        this.setColHeight(new int[COLS]);
+        setBoardSlots(new BoardButton[ROWS][COLS]);
+        setColHeight(new int[COLS]);
         
         this.gameRunning = false;
-        this.currentPlayer = this.player1;
+        game.setCurrentPlayer(game.getPlayer1());
         
         for(int row = 0; row < ROWS; row++)
         {
             for(int col = 0; col < COLS; col++)
             {
-                this.getBoardSlots()[row][col] = new BoardButton(getGame(), col);
+                getBoardSlots()[row][col] = new BoardButton(getGame(), col);
             }
         }
     }
@@ -168,73 +144,6 @@ public class BoardGridGUI extends JPanel
     {
         this.colHeight = colHeight;
     }
-    
-//    public void dropPiece(int col)
-//    {
-//        try
-//        {
-//            game.getBoardLogic().dropPiece(col, currentPlayer.getDisc());
-//            //this.getBoardLogic().dropPiece(col, currentPlayer.getDisc());
-//            //this.getBoardLogic().dropPiece(col, currentPlayer.getColour());
-//
-//            Color colour = currentPlayer.getColour();
-//            this.boardSlots[colHeight[col]][col].setCircleColour(colour);
-//            this.colHeight[col]++; // increment the height of the column
-//            //this.printBoard(); 
-//            
-//            // add ability for player panel to display "Your tunr" if it is their turn
-////            game.getPlayer1Panel().revalidate();
-////            game.getPlayer1Panel().repaint();
-////            
-////            game.getPlayer2Panel().revalidate();
-////            game.getPlayer2Panel().repaint();
-//            
-//            game.getGameGUI().setTitle(this.currentPlayer.getName() + " Move");
-//            
-//            if(this.isConnectFour())
-//            {
-//                game.getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
-//                new WinDialog(this.currentPlayer.getName());
-//                this.stopGame();
-//            }
-//            
-//            else if(this.isBoardFull())
-//            {
-//                game.getGameGUI().setTitle("Game Over! Board is Full!");
-//                this.stopGame();
-//            }                  
-//            
-//            if(this.isGameRunning())
-//            {
-//                this.switchPlayers();
-//            }
-//            
-//  
-//        } catch (ArrayIndexOutOfBoundsException e) {
-//            // add code to make player retry move
-//            System.out.println("Try again...");
-//        }  
-//    }
-        
-//    public void switchPlayers() 
-//    {
-//        // Swaps the current player
-//        
-//        Player prevPlayer = player1;
-//        
-//        if (currentPlayer == player1) 
-//        {
-//            currentPlayer = player2;
-//        } 
-//        else 
-//        {
-//            currentPlayer = player1;
-//            prevPlayer = player2;
-//        }
-//        
-//        currentPlayer.startTurn();
-//        prevPlayer.stopTurn();
-//    }
     
     public boolean isConnectFour()
     {

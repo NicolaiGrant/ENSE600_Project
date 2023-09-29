@@ -5,7 +5,7 @@
 package GUI.MainMenu;
 
 import GUI.GameGUI;
-import GUI.Leaderboard.Leaderboard;
+import GUI.Leaderboard.LeaderboardGUI;
 import game.Game;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -20,6 +20,7 @@ public class MainMenuGUI extends javax.swing.JFrame
     
     public MainMenuGUI() {
         initComponents();
+        setTitle("Connect Four! Main Menu");
         setScreenSize();
         this.game = new Game(); 
     }
@@ -269,13 +270,12 @@ public class MainMenuGUI extends javax.swing.JFrame
 
     private void leaderboardButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardButton
         dispose();
-        new Leaderboard();
+        new LeaderboardGUI(game);
     }//GEN-LAST:event_leaderboardButton
 
     private void exitButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton
         // Close the JFrame and exit the program
-        dispose();
-        System.exit(0);
+        this.game.exit();
     }//GEN-LAST:event_exitButton
 
     private void computerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerButton

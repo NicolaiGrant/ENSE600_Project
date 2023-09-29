@@ -40,41 +40,6 @@ public class GameGUI extends JFrame
         display();
     }
     
-//    public GameGUI(String player1Name, String player2Name)
-//    {
-//        //setTitle("Connect Four! - Two Player Mode");
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setVisible(true);
-//        getContentPane().setBackground(BACKGROUND);
-//        setScreenSize();        
-//        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
-//        
-//        this.player1 = new Player(player1Name, Colours.RED.getColour());
-//        this.player2 = new Player(player2Name, Colours.YELLOW.getColour());
-//        
-//        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
-//        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
-//        
-//        display();
-//    }
-//
-//    public GameGUI(String player1Name) 
-//    {
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setVisible(true);
-//        getContentPane().setBackground(BACKGROUND);
-//        setScreenSize();        
-//        setLayout(new FlowLayout(FlowLayout.CENTER, 0, 50)); 
-//        
-//        this.player1 = new Player(player1Name, Colours.RED.getColour());
-//        this.player2 = new Bot(Colours.RED.getColour());
-//        
-//        this.player1Panel = new CurrentPlayerGUI(this.getPlayer1());
-//        this.player2Panel = new CurrentPlayerGUI(this.getPlayer2());
-//        
-//        display();
-//    }
-    
     public Game getGame()
     {
         return this.game;
@@ -82,7 +47,6 @@ public class GameGUI extends JFrame
     
     public BoardGridGUI getBoard()
     {
-        //return this.board;
         return game.getBoardGUI();
     }
     
@@ -127,16 +91,24 @@ public class GameGUI extends JFrame
         game.setBoardGUI(new BoardGridGUI(getGame()));
         //board = new BoardGridGUI(this);
         //add(new MiddlePanelGUI(this, board));
-        add(new MiddlePanelGUI(this, game.getBoardGUI()));
+        add(new MiddlePanelGUI(game));
         add(new Spacer(50, 1));
         //this.add(new CurrentPlayerGUI(new Player("Player2", Colours.YELLOW.getColour())), BorderLayout.EAST);
-        add(this.getPlayer2Panel(), BorderLayout.EAST);
+        add(new CurrentPlayerGUI(getPlayer2()),BorderLayout.EAST);
+        //add(this.getPlayer2Panel(), BorderLayout.EAST);
         setVisible(true);
     }
     
     public void resetBoard()
     {
-        //this.board.resetBoard();
         game.getBoardGUI().resetBoard();
+        
+        getPlayer1().setColour(Colours.RED.getColour());
+        getPlayer2().setColour(Colours.RED.getColour());
+        
+        getPlayer1Panel().setColour(Colours.RED.getColour());
+        getPlayer2Panel().setColour(Colours.RED.getColour());
+        
+        display();
     }   
 }

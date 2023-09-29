@@ -1,6 +1,7 @@
 package GUI;
 
 import GUI.Buttons.*;
+import game.Game;
 import java.awt.*;
 import javax.swing.*;
 
@@ -13,15 +14,15 @@ public class MenuDockGUI extends JPanel
     
     private int buttonSize = 50;
     
-    public MenuDockGUI(GameGUI board)
+    public MenuDockGUI(Game game)
     {
         setLayout(new FlowLayout(FlowLayout.CENTER, 40, (height / 2) - (buttonSize / 2)));
         setPreferredSize(new Dimension(width, height));
         setBackground(BACKGROUND);
         
-        add(new ReplayButton(board, buttonSize));
-        add(new HomeButton(board, buttonSize));
-        add(new ExitButton(board, buttonSize));
+        add(new ReplayButton(game, buttonSize));
+        add(new HomeButton(game, buttonSize));
+        add(new ExitButton(game, buttonSize));
         
         setVisible(true);
     }
