@@ -1,8 +1,7 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDialog;
@@ -17,29 +16,18 @@ public class WinDialog extends JDialog
     
     public WinDialog(String winner)
     {
-        setSize(300, 150);
+        setSize(900, 100);
         setUndecorated(true);
         setLocationRelativeTo(null);
         
-        JPanel panel = new JPanel() {
-            @Override
-            protected void paintComponent(Graphics g) {
-                super.paintComponent(g);
-                int arcWidth = 50; // Adjust the radius of the rounded corners
-                int arcHeight = 0; // Adjust the radius of the rounded corners
-                int width = getWidth();
-                int height = getHeight();
-                g.setColor(getBackground());
-                g.fillRoundRect(0, 0, width, height, arcWidth, arcHeight);
-            }
-        };
-        
+        JPanel panel = new JPanel() {};     
         panel.setBackground(BACKGROUND);
-        //anel.setLayout(new BorderLayout());
         
         JLabel winMessage = new JLabel("Connect Four! " + winner + " Wins!");
+        winMessage.setFont(new Font("TW Cen MT Condensed Extra Bold", Font.BOLD, 70));
+        winMessage.setForeground(Color.WHITE);
         panel.add(winMessage);
-        
+         
         add(panel);
         setVisible(true);
         
