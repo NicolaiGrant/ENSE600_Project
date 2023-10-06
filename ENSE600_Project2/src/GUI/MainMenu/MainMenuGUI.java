@@ -9,6 +9,7 @@ import GUI.Leaderboard.LeaderboardGUI;
 import game.Game;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.time.LocalDate;
 
 /**
  *
@@ -292,8 +293,16 @@ public class MainMenuGUI extends javax.swing.JFrame
         
         userInput.dispose();
         dispose();
-//        GameGUI game = new GameGUI(player1Name, player2Name);
-//        game.getBoard().startGame();
+        
+        if(!game.getLeaderboardDB().isPlyerInDB(player1Name))
+        {
+            game.getLeaderboardDB().updateTable(player1Name, 0, LocalDate.now().toString());
+        }
+        
+        if(!game.getLeaderboardDB().isPlyerInDB(player2Name))
+        {
+            game.getLeaderboardDB().updateTable(player2Name, 0, LocalDate.now().toString());
+        }
         
         game.assignPlayers(player1Name, player2Name);
         game.play();

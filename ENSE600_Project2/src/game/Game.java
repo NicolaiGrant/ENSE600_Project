@@ -4,6 +4,7 @@ import Database.LeaderboardDB;
 import GUI.BoardGridGUI;
 import GUI.Colours;
 import GUI.GameGUI;
+import GUI.Leaderboard.LeaderboardGUI;
 import GUI.WinDialog;
 import java.awt.Color;
 import packages.Disc;
@@ -14,6 +15,7 @@ public class Game
     private Board boardLogic;
     private BoardGridGUI boardGUI;
     private LeaderboardDB leaderboardDB;
+    private LeaderboardGUI leaderboardGUI;
     
     private Player player1;
     private Player player2;
@@ -125,6 +127,11 @@ public class Game
     {
         return this.leaderboardDB;
     }
+    
+    public LeaderboardGUI getLeaderboardGUI()
+    {
+        return this.leaderboardGUI;
+    }
 
     public void play()
     {
@@ -162,6 +169,8 @@ public class Game
             {
                 getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
                 new WinDialog(this.currentPlayer.getName());
+                getLeaderboardDB().incrementPlayerScore(currentPlayer.getName());
+                
                 getBoardGUI().stopGame();
             }
             

@@ -118,17 +118,10 @@ public class LeaderboardDB
     {
         int currentPlayerScore = getPlayerScore(playerName);
         
-        if(currentPlayerScore != -1)
-        {
-            int score = currentPlayerScore++;
-            
-            String query = "UPDATE LEADERBOARD SET SCORE = " + score + " WHERE PLAYER = '" + playerName + "'";
-            dbManager.updateDB(query);
-        }
-        else
-        {
-            System.out.println("Player not found!");
-        }
+        int score = currentPlayerScore += 1;
+        
+        String query = "UPDATE LEADERBOARD SET SCORE = " + score + " WHERE PLAYER = '" + playerName + "'";
+        dbManager.updateDB(query);
     }
     
     public int getPlayerScore(String playerName)
@@ -180,19 +173,14 @@ public class LeaderboardDB
     public static void main(String[] args) {
         LeaderboardDB leaderboard = new LeaderboardDB();
         leaderboard.createLeaderboardTable();
-        leaderboard.updateTable("Nicolai", 10, "28/09/2023");
-        leaderboard.updateTable("Edan", 5, "13/07/2021");
-        leaderboard.updateTable("Nicolai", 2, "28/09/2023");
-        leaderboard.updateTable("Edan", 1, "13/07/2021");
-        leaderboard.updateTable("Nicolai", 11, "28/09/2023");
-        leaderboard.updateTable("Edan", 3, "13/07/2021");
-        leaderboard.updateTable("Nicolai", 18, "28/09/2023");
-        leaderboard.updateTable("Edan", 5, "13/07/2021");
-        leaderboard.getTable();
-        
-        System.out.println(leaderboard.isPlyerInDB("Bob"));
-        
-        leaderboard.closeConnection();
+//        leaderboard.updateTable("Nicolai", 5, "23/10/2002");
+//        leaderboard.getTable();
+//        leaderboard.incrementPlayerScore("Nicolai");
+//        leaderboard.getTable();
+//        
+//        System.out.println(leaderboard.getPlayerScore("Nicolai"));
+//        
+//        leaderboard.closeConnection();
         
     }
 }
