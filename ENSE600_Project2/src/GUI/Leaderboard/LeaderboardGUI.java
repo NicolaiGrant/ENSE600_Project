@@ -2,6 +2,7 @@ package GUI.Leaderboard;
 
 import Database.LeaderboardDB;
 import Database.LeaderboardData;
+import GUI.Colours;
 import GUI.Spacer;
 import game.Game;
 import java.awt.BorderLayout;
@@ -10,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -45,20 +47,29 @@ public class LeaderboardGUI extends JFrame
         titlePanel.add(leaderboardTitle);
         
         add(titlePanel, BorderLayout.NORTH);
-        
-        
+                
         this.model.addColumn("Rank");
         this.model.addColumn("Player");
         this.model.addColumn("Score");
         this.model.addColumn("Date");
 
         JTable leaderboardTable = new JTable(model);
+        leaderboardTable.setBackground(Colours.BLUE.getColour());
+        leaderboardTable.setForeground(Color.WHITE);
+        leaderboardTable.setFont(new Font("SansSerif", Font.PLAIN, 18));
+        leaderboardTable.setRowHeight(30);
+        leaderboardTable.setAlignmentX(CENTER_ALIGNMENT);
+        leaderboardTable.setShowGrid(true);
+        leaderboardTable.setGridColor(Color.WHITE);
+        leaderboardTable.setDefaultEditor(Object.class, null);
+        leaderboardTable.getTableHeader().setReorderingAllowed(false);
         
         JScrollPane leaderboardScroll = new JScrollPane(leaderboardTable);
+        leaderboardScroll.getViewport().setBackground(Colours.BLUE.getColour());
         
-        int widthPadding = 100;
+        int widthPadding = 500;
         int topPadding = 10;
-        int bottomPadding = 30;
+        int bottomPadding = 80;
         Border paddingBorder = BorderFactory.createEmptyBorder(topPadding, widthPadding, bottomPadding, widthPadding);
         leaderboardScroll.setBorder(paddingBorder);
         add(leaderboardScroll, BorderLayout.CENTER);
@@ -76,10 +87,14 @@ public class LeaderboardGUI extends JFrame
     public void populateLeaderboardTable()
     {
         List<LeaderboardData> leaderboardData = getDatabase().getLeaderboardData();
+        Collections.sort(leaderboardData, Collections.reverseOrder()); // Sort the lsit by score so it is in order of rank
+        
+        int rank = 1;
         
         for(LeaderboardData playerData : leaderboardData)
         {
-            this.model.addRow(new Object[] {1, playerData.getPlayerName(), playerData.getScore(), playerData.getDate()});
+            this.model.addRow(new Object[] {rank, playerData.getPlayerName(), playerData.getScore(), playerData.getDate()});
+            rank++;
         }
     }
     

@@ -4,7 +4,6 @@ public class LeaderboardData implements Comparable<LeaderboardData>
 {
     private String playerName;
     private int score;
-    private int rank;
     private String date;
     
     public LeaderboardData(String playerName, int score, String date)
@@ -12,7 +11,6 @@ public class LeaderboardData implements Comparable<LeaderboardData>
         this.playerName = playerName;
         this.score = score;
         this.date = date;
-        this.rank = 0;
     }
     
     public String getPlayerName()
@@ -30,19 +28,9 @@ public class LeaderboardData implements Comparable<LeaderboardData>
         return this.date;
     }
     
-    public int getRank()
-    {
-        return this.rank;
-    }
-    
-    public void setRank(int rank)
-    {
-        this.rank = rank;
-    }
-    
     @Override
     public int compareTo(LeaderboardData o) 
     {
-        return Integer.compare(this.rank, o.rank);
+        return Integer.compare(this.score, o.score);
     }
 }

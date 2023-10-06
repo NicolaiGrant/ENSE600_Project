@@ -181,6 +181,13 @@ public class LeaderboardDB
         LeaderboardDB leaderboard = new LeaderboardDB();
         leaderboard.createLeaderboardTable();
         leaderboard.updateTable("Nicolai", 10, "28/09/2023");
+        leaderboard.updateTable("Edan", 5, "13/07/2021");
+        leaderboard.updateTable("Nicolai", 2, "28/09/2023");
+        leaderboard.updateTable("Edan", 1, "13/07/2021");
+        leaderboard.updateTable("Nicolai", 11, "28/09/2023");
+        leaderboard.updateTable("Edan", 3, "13/07/2021");
+        leaderboard.updateTable("Nicolai", 18, "28/09/2023");
+        leaderboard.updateTable("Edan", 5, "13/07/2021");
         leaderboard.getTable();
         
         System.out.println(leaderboard.isPlyerInDB("Bob"));
