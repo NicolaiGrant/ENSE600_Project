@@ -120,6 +120,11 @@ public class Game
     {
         this.boardGUI = boardGUI;
     }
+    
+    public LeaderboardDB getLeaderboardDB()
+    {
+        return this.leaderboardDB;
+    }
 
     public void play()
     {
@@ -138,6 +143,8 @@ public class Game
     {
         try
         {
+            
+            
             getBoardLogic().dropPiece(col, currentPlayer.getDisc());
 
             getBoardGUI().updateBoard(col, currentPlayer.getColour());
@@ -149,7 +156,7 @@ public class Game
 //            game.getPlayer2Panel().revalidate();
 //            game.getPlayer2Panel().repaint();
             
-            getGameGUI().setTitle(this.currentPlayer.getName() + " Move");
+            
             
             if(isConnectFour())
             {
@@ -167,6 +174,7 @@ public class Game
             if(getBoardGUI().isGameRunning())
             {
                 changePlayerTurn();
+                getGameGUI().setTitle(this.currentPlayer.getName() + " Move");
             }
             
   

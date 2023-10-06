@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,7 +48,7 @@ public class LeaderboardDB
     public void getTable()
     {
         try 
-         {
+        {
             String query = "SELECT * FROM LEADERBOARD";
             ResultSet rs = dbManager.queryDB(query);
             
@@ -61,6 +63,31 @@ public class LeaderboardDB
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
+    }
+    
+    public List<LeaderboardData> getLeaderboardData()
+    {
+        // Retrieves the player data from the database and stores it in a list of type LeaderboardData
+        
+        List<LeaderboardData> leaderboardData = new ArrayList<>();
+        try 
+        {
+            String query = "SELECT * FROM LEADERBOARD";
+            ResultSet rs = dbManager.queryDB(query);
+            
+            while(rs.next())
+            {
+                String playerName = rs.getString("PLAYER");
+                int score = rs.getInt("SCORE");
+                String date = rs.getString("DATE");
+                leaderboardData.add(new LeaderboardData(playerName, score, date));
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return leaderboardData;
     }
     
     public boolean isPlyerInDB(String playerName)
@@ -85,6 +112,47 @@ public class LeaderboardDB
         }
         
         return false;
+    }
+    
+    public void incrementPlayerScore(String playerName)
+    {
+        int currentPlayerScore = getPlayerScore(playerName);
+        
+        if(currentPlayerScore != -1)
+        {
+            int score = currentPlayerScore++;
+            
+            String query = "UPDATE LEADERBOARD SET SCORE = " + score + " WHERE PLAYER = '" + playerName + "'";
+            dbManager.updateDB(query);
+        }
+        else
+        {
+            System.out.println("Player not found!");
+        }
+    }
+    
+    public int getPlayerScore(String playerName)
+    {
+        int playerScore = -1;
+        
+        try 
+         {
+            String query = "SELECT * FROM LEADERBOARD";
+            ResultSet rs = dbManager.queryDB(query);
+            
+            while(rs.next())
+            {
+                if(rs.getString("PLAYER").equals(playerName))
+                {
+                    playerScore = rs.getInt("SCORE");
+                }
+            }
+            
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return playerScore;
     }
             
 

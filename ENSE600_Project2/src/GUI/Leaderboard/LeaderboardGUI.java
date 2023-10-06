@@ -1,5 +1,7 @@
 package GUI.Leaderboard;
 
+import Database.LeaderboardDB;
+import Database.LeaderboardData;
 import GUI.Spacer;
 import game.Game;
 import java.awt.BorderLayout;
@@ -8,14 +10,23 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 public class LeaderboardGUI extends JFrame
 {
+    private Game game;
+    private LeaderboardDB leaderboardDB;
+    private DefaultTableModel model;
+    
     public LeaderboardGUI(Game game)
     {
+        this.game = game;
+        this.leaderboardDB = game.getLeaderboardDB();
+        this.model = new DefaultTableModel();
+        
         setTitle("Leaderboard");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -35,11 +46,11 @@ public class LeaderboardGUI extends JFrame
         
         add(titlePanel, BorderLayout.NORTH);
         
-        DefaultTableModel model = new DefaultTableModel();
-        model.addColumn("Rank");
-        model.addColumn("Player");
-        model.addColumn("Score");
-        model.addColumn("Date");
+        
+        this.model.addColumn("Rank");
+        this.model.addColumn("Player");
+        this.model.addColumn("Score");
+        this.model.addColumn("Date");
 
         JTable leaderboardTable = new JTable(model);
         
@@ -52,7 +63,24 @@ public class LeaderboardGUI extends JFrame
         leaderboardScroll.setBorder(paddingBorder);
         add(leaderboardScroll, BorderLayout.CENTER);
         
+        populateLeaderboardTable();
+        
         setVisible(true);
+    }
+    
+    public LeaderboardDB getDatabase()
+    {
+        return this.leaderboardDB;
+    }
+    
+    public void populateLeaderboardTable()
+    {
+        List<LeaderboardData> leaderboardData = getDatabase().getLeaderboardData();
+        
+        for(LeaderboardData playerData : leaderboardData)
+        {
+            this.model.addRow(new Object[] {1, playerData.getPlayerName(), playerData.getScore(), playerData.getDate()});
+        }
     }
     
     public void setScreenSize()
