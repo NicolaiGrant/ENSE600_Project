@@ -6,6 +6,7 @@ package GUI.MainMenu;
 
 import GUI.GameGUI;
 import GUI.Leaderboard.LeaderboardGUI;
+import game.BotGame;
 import game.Game;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -18,12 +19,14 @@ import java.time.LocalDate;
 public class MainMenuGUI extends javax.swing.JFrame 
 {
     private Game game;
+    private BotGame botGame;
     
     public MainMenuGUI() {
         initComponents();
         setTitle("Connect Four! Main Menu");
         setScreenSize();
-        this.game = new Game(); 
+        this.game = new Game();
+        this.botGame = new BotGame();
     }
     
     public void setScreenSize()
@@ -50,11 +53,20 @@ public class MainMenuGUI extends javax.swing.JFrame
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        userInput = new javax.swing.JDialog();
-        jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
+        userInput1Player = new javax.swing.JDialog();
+        jPanel3 = new javax.swing.JPanel();
+        jTextField5 = new javax.swing.JTextField();
+        startButton1Player = new javax.swing.JButton();
+        userInputTwoPlayer = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        startButton = new javax.swing.JButton();
+        userInput2Player = new javax.swing.JDialog();
+        jPanel6 = new javax.swing.JPanel();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
+        startButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -62,71 +74,204 @@ public class MainMenuGUI extends javax.swing.JFrame
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        userInput.setLocation(new java.awt.Point(0, 0));
-        userInput.setName("playerInput"); // NOI18N
-        userInput.setResizable(false);
-        userInput.setSize(new java.awt.Dimension(555, 411));
-        userInput.setLocationRelativeTo(null);
-        userInput.setUndecorated(true);
-        userInput.setAlwaysOnTop(true);
+        userInput1Player.setLocation(new java.awt.Point(0, 0));
+        userInput1Player.setName("playerInput"); // NOI18N
+        userInput1Player.setResizable(false);
+        userInput1Player.setSize(new java.awt.Dimension(555, 411));
+        userInput2Player.setLocationRelativeTo(null);
+        userInput2Player.setUndecorated(true);
+        userInput2Player.setAlwaysOnTop(true);
 
-        jPanel2.setBackground(new java.awt.Color(93, 139, 186));
+        jPanel3.setBackground(new java.awt.Color(93, 139, 186));
 
-        jTextField1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jTextField1.setText("Player1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextField5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField5.setText("Player1");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextField5ActionPerformed(evt);
             }
         });
 
-        jTextField2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jTextField2.setText("Player2");
-
-        jButton5.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
-        jButton5.setText("Start");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        startButton1Player.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        startButton1Player.setText("Start");
+        startButton1Player.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startButton(evt);
+                startButton1PlayerstartButton(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(122, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(118, 118, 118))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(176, 176, 176)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(127, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(startButton1Player, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(120, Short.MAX_VALUE)
+                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(startButton1Player, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
+        );
+
+        javax.swing.GroupLayout userInput1PlayerLayout = new javax.swing.GroupLayout(userInput1Player.getContentPane());
+        userInput1Player.getContentPane().setLayout(userInput1PlayerLayout);
+        userInput1PlayerLayout.setHorizontalGroup(
+            userInput1PlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userInput1PlayerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        userInput1PlayerLayout.setVerticalGroup(
+            userInput1PlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(userInput1PlayerLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        userInputTwoPlayer.setLocation(new java.awt.Point(0, 0));
+        userInputTwoPlayer.setName("playerInput"); // NOI18N
+        userInputTwoPlayer.setResizable(false);
+        userInputTwoPlayer.setSize(new java.awt.Dimension(555, 411));
+        userInput2Player.setLocationRelativeTo(null);
+        userInput2Player.setUndecorated(false);
+        userInput2Player.setAlwaysOnTop(true);
+
+        jPanel5.setBackground(new java.awt.Color(93, 139, 186));
+
+        jTextField3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField3.setText("Player1");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
+        jTextField4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField4.setText("Player2");
+
+        startButton.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        startButton.setText("Start");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonstartButton(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField4)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(118, 118, 118))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
         );
 
-        javax.swing.GroupLayout userInputLayout = new javax.swing.GroupLayout(userInput.getContentPane());
-        userInput.getContentPane().setLayout(userInputLayout);
-        userInputLayout.setHorizontalGroup(
-            userInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout userInputTwoPlayerLayout = new javax.swing.GroupLayout(userInputTwoPlayer.getContentPane());
+        userInputTwoPlayer.getContentPane().setLayout(userInputTwoPlayerLayout);
+        userInputTwoPlayerLayout.setHorizontalGroup(
+            userInputTwoPlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        userInputLayout.setVerticalGroup(
-            userInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        userInputTwoPlayerLayout.setVerticalGroup(
+            userInputTwoPlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        userInput2Player.setLocation(new java.awt.Point(0, 0));
+        userInput2Player.setName("playerInput"); // NOI18N
+        userInput2Player.setResizable(false);
+        userInput2Player.setSize(new java.awt.Dimension(555, 411));
+        userInput2Player.setLocationRelativeTo(null);
+        userInput2Player.setUndecorated(false);
+        userInput2Player.setAlwaysOnTop(true);
+
+        jPanel6.setBackground(new java.awt.Color(93, 139, 186));
+
+        jTextField6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField6.setText("Player1");
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
+        jTextField7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jTextField7.setText("Player2");
+
+        startButton1.setFont(new java.awt.Font("SansSerif", 0, 36)); // NOI18N
+        startButton1.setText("Start");
+        startButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButton1startButton(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap(134, Short.MAX_VALUE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextField7)
+                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(118, 118, 118))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addComponent(startButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(177, 177, 177))))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(138, Short.MAX_VALUE)
+                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(startButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69))
+        );
+
+        javax.swing.GroupLayout userInput2PlayerLayout = new javax.swing.GroupLayout(userInput2Player.getContentPane());
+        userInput2Player.getContentPane().setLayout(userInput2PlayerLayout);
+        userInput2PlayerLayout.setHorizontalGroup(
+            userInput2PlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        userInput2PlayerLayout.setVerticalGroup(
+            userInput2PlayerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -266,7 +411,9 @@ public class MainMenuGUI extends javax.swing.JFrame
 
     private void twoPlayerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoPlayerButton
         setAlwaysOnTop(false);
-        userInput.setVisible(true);
+        userInputTwoPlayer.setTitle("Enter Player Names...");
+        userInputTwoPlayer.setLocationRelativeTo(null);
+        userInputTwoPlayer.setVisible(true);
     }//GEN-LAST:event_twoPlayerButton
 
     private void leaderboardButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardButton
@@ -280,18 +427,34 @@ public class MainMenuGUI extends javax.swing.JFrame
     }//GEN-LAST:event_exitButton
 
     private void computerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerButton
-        String player1Name = jTextField1.getText();
-        
-        dispose();
-//        GameGUI game = new GameGUI(player1Name);
-//        game.getBoard().startGame();
+        setAlwaysOnTop(false);
+        userInput1Player.setLocationRelativeTo(null);
+        userInput1Player.setVisible(true); 
     }//GEN-LAST:event_computerButton
 
-    private void startButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton
-        String player1Name = jTextField1.getText();
-        String player2Name = jTextField2.getText();
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void startButton1PlayerstartButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1PlayerstartButton
+        String player1Name = jTextField5.getText();
         
-        userInput.dispose();
+        userInput1Player.dispose();
+        dispose();
+        
+        botGame.assignPlayers(player1Name);
+        botGame.play();
+    }//GEN-LAST:event_startButton1PlayerstartButton
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void startButtonstartButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonstartButton
+        String player1Name = jTextField3.getText();
+        String player2Name = jTextField4.getText();
+        
+        userInputTwoPlayer.dispose();
         dispose();
         
         if(!game.getLeaderboardDB().isPlyerInDB(player1Name))
@@ -306,12 +469,15 @@ public class MainMenuGUI extends javax.swing.JFrame
         
         game.assignPlayers(player1Name, player2Name);
         game.play();
-        
-    }//GEN-LAST:event_startButton
+    }//GEN-LAST:event_startButtonstartButton
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextField6ActionPerformed
+
+    private void startButton1startButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButton1startButton
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startButton1startButton
 
     /**
      * @param args the command line arguments
@@ -353,12 +519,21 @@ public class MainMenuGUI extends javax.swing.JFrame
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JDialog userInput;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
+    private javax.swing.JButton startButton;
+    private javax.swing.JButton startButton1;
+    private javax.swing.JButton startButton1Player;
+    private javax.swing.JDialog userInput1Player;
+    private javax.swing.JDialog userInput2Player;
+    private javax.swing.JDialog userInputTwoPlayer;
     // End of variables declaration//GEN-END:variables
 }

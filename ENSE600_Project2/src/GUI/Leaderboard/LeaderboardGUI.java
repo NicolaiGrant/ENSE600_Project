@@ -67,7 +67,7 @@ public class LeaderboardGUI extends JFrame
         JScrollPane leaderboardScroll = new JScrollPane(leaderboardTable);
         leaderboardScroll.getViewport().setBackground(Colours.BLUE.getColour());
         
-        int widthPadding = 500;
+        int widthPadding = 200;
         int topPadding = 10;
         int bottomPadding = 80;
         Border paddingBorder = BorderFactory.createEmptyBorder(topPadding, widthPadding, bottomPadding, widthPadding);

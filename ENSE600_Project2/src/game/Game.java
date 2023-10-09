@@ -78,10 +78,21 @@ public class Game
         return this.player1;
     }
     
+    public void setPlayer1(Player player1)
+    {
+        this.player1 = player1;
+    }
+    
     public Player getPlayer2()
     {
         return this.player2;
     }
+    
+    public void setPlayer2(Player player2)
+    {
+        this.player2 = player2;
+    }
+    
     
     public Player getCurrentPlayer()
     {
@@ -135,9 +146,9 @@ public class Game
 
     public void play()
     {
-        this.gameGUI = new GameGUI(this);
-        this.gameGUI.getBoard().startGame();
-        this.gameRunning = true;
+        gameGUI = new GameGUI(this);
+        gameGUI.getBoard().startGame();
+        gameRunning = true;
     }
     
     public void exit()
@@ -150,20 +161,9 @@ public class Game
     {
         try
         {
-            
-            
             getBoardLogic().dropPiece(col, currentPlayer.getDisc());
 
             getBoardGUI().updateBoard(col, currentPlayer.getColour());
-            
-            // add ability for player panel to display "Your tunr" if it is their turn
-//            game.getPlayer1Panel().revalidate();
-//            game.getPlayer1Panel().repaint();
-//            
-//            game.getPlayer2Panel().revalidate();
-//            game.getPlayer2Panel().repaint();
-            
-            
             
             if(isConnectFour())
             {

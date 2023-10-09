@@ -1,18 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package GUI;
 
 import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author nicolaigrant
- */
 public class Spacer extends JPanel
 {
+    // Custom JPanel object used to create a custom spacer to add custom gaps
+    // between other Jobjects
+    
     private int width;
     private int height;
     

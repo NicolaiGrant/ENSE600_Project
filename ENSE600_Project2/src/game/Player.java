@@ -19,21 +19,6 @@ public class Player
         this.isTurn = false;
     }
     
-//    public Player(String name, Color colour)
-//    {
-//        this.name = name;
-//        this.colour = colour;
-//        this.isTurn = false;
-//    }
-//    
-//    public Player(String name, Color colour, Disc disc)
-//    {
-//        this.name = name;
-//        this.colour = colour;
-//        this.disc = disc;
-//        this.isTurn = false;
-//    }
-    
     public String getName()
     {
         return name;

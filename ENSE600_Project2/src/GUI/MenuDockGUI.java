@@ -7,6 +7,8 @@ import javax.swing.*;
 
 public class MenuDockGUI extends JPanel
 {
+    // JPanel that contains buttons for users to replay, return to the main menu
+    // and exit the game.
     private static final Color BACKGROUND = new Color(93, 139, 186);
     
     private int width = 280;

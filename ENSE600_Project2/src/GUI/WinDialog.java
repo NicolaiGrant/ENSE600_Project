@@ -12,6 +12,8 @@ import javax.swing.Timer;
 
 public class WinDialog extends JDialog
 {
+    // JDialog box used to notify the player that the game is over with a win
+    // message "Connect Four! 'player name' Wins! that lasts for 2 seconds.
     private static final Color BACKGROUND = new Color(93, 139, 186);
     
     public WinDialog(String winner)
