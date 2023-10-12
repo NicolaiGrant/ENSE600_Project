@@ -9,12 +9,12 @@ public class MenuDockGUI extends JPanel
 {
     // JPanel that contains buttons for users to replay, return to the main menu
     // and exit the game.
-    private static final Color BACKGROUND = new Color(93, 139, 186);
+    protected static final Color BACKGROUND = new Color(93, 139, 186);
     
-    private int width = 280;
-    private int height = 80;
+    protected int width = 280;
+    protected int height = 80;
     
-    private int buttonSize = 50;
+    protected int buttonSize = 50;
     
     public MenuDockGUI(Game game)
     {
@@ -22,11 +22,16 @@ public class MenuDockGUI extends JPanel
         setPreferredSize(new Dimension(width, height));
         setBackground(BACKGROUND);
         
+        addButtons(game);
+
+        setVisible(true);
+    }
+    
+    public void addButtons(Game game)
+    {
         add(new ReplayButton(game, buttonSize));
         add(new HomeButton(game, buttonSize));
         add(new ExitButton(game, buttonSize));
-        
-        setVisible(true);
     }
     
     @Override

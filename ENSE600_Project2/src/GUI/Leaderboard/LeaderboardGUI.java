@@ -3,6 +3,7 @@ package GUI.Leaderboard;
 import Database.LeaderboardDB;
 import Database.LeaderboardData;
 import GUI.Colours;
+import GUI.MenuDockGUI;
 import GUI.Spacer;
 import game.Game;
 import java.awt.BorderLayout;
@@ -47,7 +48,7 @@ public class LeaderboardGUI extends JFrame
         titlePanel.add(leaderboardTitle);
         
         add(titlePanel, BorderLayout.NORTH);
-                
+         
         this.model.addColumn("Rank");
         this.model.addColumn("Player");
         this.model.addColumn("Score");
@@ -67,12 +68,14 @@ public class LeaderboardGUI extends JFrame
         JScrollPane leaderboardScroll = new JScrollPane(leaderboardTable);
         leaderboardScroll.getViewport().setBackground(Colours.BLUE.getColour());
         
-        int widthPadding = 200;
+        int widthPadding = 150;
         int topPadding = 10;
-        int bottomPadding = 80;
+        int bottomPadding = 20;
         Border paddingBorder = BorderFactory.createEmptyBorder(topPadding, widthPadding, bottomPadding, widthPadding);
         leaderboardScroll.setBorder(paddingBorder);
         add(leaderboardScroll, BorderLayout.CENTER);
+        
+        add(new LeaderboardDockGUI(game), BorderLayout.SOUTH);
         
         populateLeaderboardTable();
         

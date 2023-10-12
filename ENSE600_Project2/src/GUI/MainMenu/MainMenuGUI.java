@@ -276,7 +276,6 @@ public class MainMenuGUI extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setBackground(new java.awt.Color(204, 204, 255));
         setMinimumSize(new java.awt.Dimension(1480, 920));
 
         jPanel1.setBackground(new java.awt.Color(93, 139, 186));
@@ -418,7 +417,7 @@ public class MainMenuGUI extends javax.swing.JFrame
 
     private void leaderboardButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leaderboardButton
         dispose();
-        new LeaderboardGUI(game);
+        game.setLeaderboardGUI(new LeaderboardGUI(game));
     }//GEN-LAST:event_leaderboardButton
 
     private void exitButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButton

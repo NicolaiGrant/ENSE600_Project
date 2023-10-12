@@ -143,6 +143,11 @@ public class Game
     {
         return this.leaderboardGUI;
     }
+    
+    public void setLeaderboardGUI(LeaderboardGUI leaderboardGUI)
+    {
+        this.leaderboardGUI = leaderboardGUI;
+    }
 
     public void play()
     {
@@ -161,24 +166,16 @@ public class Game
     {
         try
         {
+            this.getGameGUI().getPlayer1Panel().repaint();
+            this.getGameGUI().getPlayer2Panel().repaint();
+            
             getBoardLogic().dropPiece(col, currentPlayer.getDisc());
 
             getBoardGUI().updateBoard(col, currentPlayer.getColour());
             
-            if(isConnectFour())
-            {
-                getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
-                new WinDialog(this.currentPlayer.getName());
-                getLeaderboardDB().incrementPlayerScore(currentPlayer.getName());
-                
-                getBoardGUI().stopGame();
-            }
+            checkGameOver();
             
-            else if(isBoardFull())
-            {
-                getGameGUI().setTitle("Game Over! Board is Full!");
-                getBoardGUI().stopGame();
-            }                  
+            
             
             if(getBoardGUI().isGameRunning())
             {
@@ -191,6 +188,24 @@ public class Game
             // add code to make player retry move
             System.out.println("Try again...");
         }  
+    }
+    
+    public void checkGameOver()
+    {
+        if(isConnectFour())
+        {
+            getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");
+            new WinDialog(this.currentPlayer.getName());
+            getLeaderboardDB().incrementPlayerScore(currentPlayer.getName());
+                
+            getBoardGUI().stopGame();
+        }
+            
+        else if(isBoardFull())
+        {
+            getGameGUI().setTitle("Game Over! Board is Full!");
+            getBoardGUI().stopGame();
+        }
     }
     
     public void changePlayerTurn() 

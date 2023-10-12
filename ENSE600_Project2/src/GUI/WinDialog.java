@@ -18,7 +18,7 @@ public class WinDialog extends JDialog
     
     public WinDialog(String winner)
     {
-        setSize(900, 100);
+        setSize(720, 80);
         setUndecorated(true);
         setLocationRelativeTo(null);
         
@@ -26,7 +26,7 @@ public class WinDialog extends JDialog
         panel.setBackground(BACKGROUND);
         
         JLabel winMessage = new JLabel("Connect Four! " + winner + " Wins!");
-        winMessage.setFont(new Font("TW Cen MT Condensed Extra Bold", Font.BOLD, 70));
+        winMessage.setFont(new Font("TW Cen MT Condensed Extra Bold", Font.BOLD, 60));
         winMessage.setForeground(Color.WHITE);
         panel.add(winMessage);
          

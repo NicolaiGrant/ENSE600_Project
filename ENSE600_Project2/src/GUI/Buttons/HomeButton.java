@@ -1,9 +1,7 @@
 package GUI.Buttons;
 
-import GUI.GameGUI;
 import GUI.MainMenu.MainMenuGUI;
 import game.Game;
-import java.awt.*;
 import java.awt.event.*;
 
 public class HomeButton extends MenuButton
@@ -20,7 +18,16 @@ public class HomeButton extends MenuButton
             {
                 MainMenuGUI mainMenu = new MainMenuGUI();
                 mainMenu.setVisible(true);
-                game.getGameGUI().dispose();
+                
+                if(game.getLeaderboardGUI() != null)
+                {
+                    game.getLeaderboardGUI().dispose();
+                }
+                else
+                {
+                    game.getGameGUI().dispose();
+                }
+                        
             }
         });
     }

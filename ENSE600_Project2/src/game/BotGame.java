@@ -48,39 +48,57 @@ public class BotGame extends Game
             getBoardLogic().dropPiece(col, getCurrentPlayer().getDisc());
             getBoardGUI().updateBoard(col, getCurrentPlayer().getColour());
             
-            if(isConnectFour())
-            {
-                getGameGUI().setTitle("Connect Four! " + getCurrentPlayer().getName() + " Wins!");
-                new WinDialog(getCurrentPlayer().getName());
-                getLeaderboardDB().incrementPlayerScore(getCurrentPlayer().getName());
-                
-                getBoardGUI().stopGame();
-            }
-            
-            else if(isBoardFull())
-            {
-                getGameGUI().setTitle("Game Over! Board is Full!");
-                getBoardGUI().stopGame();
-            }                  
+            checkGameOver();
             
             if(getBoardGUI().isGameRunning())
             {
                 changePlayerTurn();
-                
+
                 if(getCurrentPlayer().getName().equals("Bot"))
                 {
-                    col = random.nextInt(7);
-                    getBoardLogic().dropPiece(col, getCurrentPlayer().getDisc());
-                    getBoardGUI().updateBoard(col, getCurrentPlayer().getColour());
+                    while(true)
+                    {
+                        col = random.nextInt(7);
+                        try
+                        {
+                            getBoardLogic().dropPiece(col, getCurrentPlayer().getDisc());
+                            getBoardGUI().updateBoard(col, getCurrentPlayer().getColour());
+                            break;
+                            
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            // Invalid move.
+                        } 
+                    }
+                    
+                    checkGameOver();
+                    
                     changePlayerTurn();
                 }
                 
-                getGameGUI().setTitle(getCurrentPlayer().getName() + " Move");
+                getGameGUI().setTitle(getCurrentPlayer().getName() + " Move");    
             }
 
         } catch (ArrayIndexOutOfBoundsException e) {
             // add code to make player retry move
             System.out.println("Try again...");
         }  
-    }         
+    } 
+    
+    public void checkGameOver()
+    {
+        if(isConnectFour())
+        {
+            getGameGUI().setTitle("Connect Four! " + getCurrentPlayer().getName() + " Wins!");
+            new WinDialog(getCurrentPlayer().getName());
+            getLeaderboardDB().incrementPlayerScore(getCurrentPlayer().getName());
+
+            getBoardGUI().stopGame();
+        }
+
+        else if(isBoardFull())
+        {
+            getGameGUI().setTitle("Game Over! Board is Full!");
+            getBoardGUI().stopGame();
+        }
+    }
 }

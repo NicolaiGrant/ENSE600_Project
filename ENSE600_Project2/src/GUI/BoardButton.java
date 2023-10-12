@@ -61,6 +61,7 @@ public class BoardButton extends JButton
                 {
                     
                     setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
+                    //setBorder(BorderFactory.createLineBorder(game.getCurrentPlayer().getColour(), 1));
                 } 
             }
 

@@ -165,6 +165,12 @@ public class LeaderboardDB
             System.err.println("SQLException: " + ex.getMessage());
         }
     }
+    
+    public void clearLeaderboard()
+    {
+        String query = "DELETE FROM LEADERBOARD";
+        dbManager.updateDB(query);
+    }
 
     public void closeConnection() {
         this.dbManager.closeConnections();

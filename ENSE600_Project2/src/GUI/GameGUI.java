@@ -75,22 +75,24 @@ public class GameGUI extends JFrame
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
         setResizable(true);
-        int screenWidth = screenSize.width;
-        int screenHeight = screenSize.height;
+        //int screenWidth = screenSize.width;
+        //int screenHeight = screenSize.height;
         //int frameWidth = screenWidth / 2 + 500;
         //int frameHeight = screenHeight / 2 + 400;
+        int screenWidth = 1380;
+        int screenHeight = 880;
         setSize(screenWidth, screenHeight);
         setLocationRelativeTo(null);
     }
     
     public void display()
     {
-        add(this.getPlayer1Panel(), BorderLayout.WEST);
+        add(getPlayer1Panel(), BorderLayout.WEST);
         add(new Spacer(50, 1));
         game.setBoardGUI(new BoardGridGUI(getGame()));
         add(new MiddlePanelGUI(game));
         add(new Spacer(50, 1));
-        add(new CurrentPlayerGUI(getPlayer2()),BorderLayout.EAST);
+        add(getPlayer2Panel(),BorderLayout.EAST);
         setVisible(true);
     }
     
@@ -98,12 +100,7 @@ public class GameGUI extends JFrame
     {
         game.getBoardGUI().resetBoard();
         
-        getPlayer1().setColour(Colours.RED.getColour());
-        getPlayer2().setColour(Colours.RED.getColour());
-        
-        getPlayer1Panel().setColour(Colours.RED.getColour());
-        getPlayer2Panel().setColour(Colours.RED.getColour());
-        
+        getPlayer2Panel().repaint();
         display();
     }   
 }

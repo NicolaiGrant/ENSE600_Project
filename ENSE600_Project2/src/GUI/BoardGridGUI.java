@@ -5,7 +5,6 @@ import game.Game;
 import game.Player;
 import java.awt.*;
 import javax.swing.*;
-import packages.Disc;
 
 public class BoardGridGUI extends JPanel
 {
@@ -19,8 +18,6 @@ public class BoardGridGUI extends JPanel
     
     BoardButton[][] boardSlots;
     int[] colHeight;
-    
-//    private Player currentPlayer;
     
     private boolean gameRunning;
     
@@ -60,11 +57,6 @@ public class BoardGridGUI extends JPanel
         return this.gameRunning;
     }
     
-//    public Board getBoardLogic()
-//    {
-//        return this.boardLogic;
-//    }
-    
     public void resetBoard() 
     {
         removeAll();
@@ -73,9 +65,6 @@ public class BoardGridGUI extends JPanel
         printBoard();
 
         this.gameRunning = true;
-        //this.currentPlayer = this.player1; // change this so its random
-        //this.currentPlayer.startTurn();
-
         game.getGameGUI().setTitle("Connect Four! - Two Player Mode");
 
         revalidate();
