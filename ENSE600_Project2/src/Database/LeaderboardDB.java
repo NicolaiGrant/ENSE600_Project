@@ -34,9 +34,6 @@ public class LeaderboardDB
         
         String sqlCreateTable = "CREATE TABLE LEADERBOARD (PLAYER VARCHAR(20), SCORE INT, DATE VARCHAR(20))";
         dbManager.updateDB(sqlCreateTable);
-            
-        // String sqlInsertRecords = "INSERT INTO PROMOTION VALUES ('Fiction', 0), ('Non-fiction', 10), ('Textbook', 30)";
-        //dbManager.updateDB(sqlInsertRecords);
     }
     
     public void updateTable(String playerName, int score, String date)
@@ -172,21 +169,8 @@ public class LeaderboardDB
         dbManager.updateDB(query);
     }
 
-    public void closeConnection() {
+    public void closeConnection() 
+    {
         this.dbManager.closeConnections();
-    }
-
-    public static void main(String[] args) {
-        LeaderboardDB leaderboard = new LeaderboardDB();
-        leaderboard.createLeaderboardTable();
-//        leaderboard.updateTable("Nicolai", 5, "23/10/2002");
-//        leaderboard.getTable();
-//        leaderboard.incrementPlayerScore("Nicolai");
-//        leaderboard.getTable();
-//        
-//        System.out.println(leaderboard.getPlayerScore("Nicolai"));
-//        
-//        leaderboard.closeConnection();
-        
     }
 }

@@ -22,6 +22,7 @@ public class HomeButton extends MenuButton
                 if(game.getLeaderboardGUI() != null)
                 {
                     game.getLeaderboardGUI().dispose();
+                    game.getLeaderboardDB().closeConnection();
                 }
                 else
                 {

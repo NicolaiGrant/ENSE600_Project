@@ -28,7 +28,7 @@ public final class Board
         this.board = new String[ROWS][COLS];
         this.colHeight = new int[COLS];
         this.emptyBoard();
-        this.displayBoard();
+        //this.displayBoard();
     }
     
     public String[][] getBoard()
@@ -93,7 +93,7 @@ public final class Board
         //x = x-1; // shifts x so that index starts at 1
         this.getBoard()[this.getColHeight()[x]][x] = disc.getDisc();
         this.getColHeight()[x]++; // increment the height of the column
-        this.displayBoard();
+        //this.displayBoard();
     }
     
     public boolean isRowFull(int row)
