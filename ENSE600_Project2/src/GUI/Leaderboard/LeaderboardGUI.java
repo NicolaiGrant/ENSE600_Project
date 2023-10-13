@@ -101,6 +101,16 @@ public class LeaderboardGUI extends JFrame
         }
     }
     
+    public void clearLeaderboardTable() 
+    {
+        int rowCount = model.getRowCount();
+        
+        for (int i = rowCount - 1; i >= 0; i--) 
+        {
+            model.removeRow(i);
+        }
+    }
+    
     public void setScreenSize()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();

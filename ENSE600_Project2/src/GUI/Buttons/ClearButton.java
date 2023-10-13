@@ -1,5 +1,6 @@
 package GUI.Buttons;
 
+import GUI.Leaderboard.LeaderboardGUI;
 import game.Game;
 import java.awt.event.*;
 
@@ -20,7 +21,7 @@ public class ClearButton extends MenuButton
             public void actionPerformed(ActionEvent e) 
             {
                 game.getLeaderboardDB().clearLeaderboard();
-                game.getLeaderboardGUI().repaint();
+                game.getLeaderboardGUI().clearLeaderboardTable();
             }
         });
     }
