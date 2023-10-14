@@ -423,8 +423,10 @@ public class MainMenuGUI extends javax.swing.JFrame
 
     private void computerButton(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_computerButton
         setAlwaysOnTop(false);
+        userInput1Player.setTitle("Enter Name...");
         userInput1Player.setLocationRelativeTo(null);
         userInput1Player.setVisible(true); 
+        
     }//GEN-LAST:event_computerButton
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed

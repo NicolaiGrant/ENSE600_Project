@@ -38,7 +38,7 @@ public class LeaderboardGUI extends JFrame
         getContentPane().setBackground(game.BACKGROUND);
         setScreenSize();
         
-        add(new CenterPanel(game));
+        add(new CenterPanel(game, model));
         
         populateLeaderboardTable();
         setVisible(true);

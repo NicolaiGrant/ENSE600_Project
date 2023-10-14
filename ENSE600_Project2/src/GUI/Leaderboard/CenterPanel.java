@@ -13,9 +13,9 @@ public class CenterPanel extends JPanel
     private static final Color BACKGROUND = new Color(93, 139, 186);
     private DefaultTableModel model;
     
-    public CenterPanel(Game game) 
+    public CenterPanel(Game game, DefaultTableModel model) 
     {
-        this.model = new DefaultTableModel();
+        this.model = model;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
         // Title

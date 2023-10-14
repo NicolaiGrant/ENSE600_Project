@@ -1,9 +1,6 @@
 package GUI.Buttons;
 
-import GUI.Leaderboard.LeaderboardGUI;
-import game.Game;
-import java.awt.event.*;
-
+import GUI.Leaderboard.ConfirmationDialog;
 import game.Game;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,8 +17,8 @@ public class ClearButton extends MenuButton
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                game.getLeaderboardDB().clearLeaderboard();
-                game.getLeaderboardGUI().clearLeaderboardTable();
+                new ConfirmationDialog(game);
+ 
             }
         });
     }
