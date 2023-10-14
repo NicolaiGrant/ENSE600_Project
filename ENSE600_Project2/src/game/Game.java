@@ -36,6 +36,7 @@ public class Game
         this.player2 = new Player(player2Name);
         
         this.currentPlayer = getPlayer1();
+        getPlayer1().startTurn();
         
         if(getPlayer1().getColour() == Colours.RED.getColour())
         {

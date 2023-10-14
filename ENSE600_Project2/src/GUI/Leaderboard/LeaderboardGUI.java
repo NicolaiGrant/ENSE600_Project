@@ -6,9 +6,11 @@ import GUI.Colours;
 import GUI.MenuDockGUI;
 import GUI.Spacer;
 import game.Game;
+import static game.Game.BACKGROUND;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Toolkit;
@@ -36,49 +38,9 @@ public class LeaderboardGUI extends JFrame
         getContentPane().setBackground(game.BACKGROUND);
         setScreenSize();
         
-        add(new Spacer(150, 150));
-        
-        JPanel titlePanel = new JPanel(new GridBagLayout());
-        titlePanel.setBackground(game.BACKGROUND);
-        JLabel leaderboardTitle = new JLabel("Leaderboard");
-        
-        Font titleFont = new Font("TW Cen MT Condensed Extra Bold", Font.BOLD, 70);
-        leaderboardTitle.setFont(titleFont);
-        leaderboardTitle.setForeground(Color.WHITE);
-        titlePanel.add(leaderboardTitle);
-        
-        add(titlePanel, BorderLayout.NORTH);
-         
-        this.model.addColumn("Rank");
-        this.model.addColumn("Player");
-        this.model.addColumn("Score");
-        this.model.addColumn("Date");
-
-        JTable leaderboardTable = new JTable(model);
-        leaderboardTable.setBackground(Colours.BLUE.getColour());
-        leaderboardTable.setForeground(Color.WHITE);
-        leaderboardTable.setFont(new Font("SansSerif", Font.PLAIN, 18));
-        leaderboardTable.setRowHeight(30);
-        leaderboardTable.setAlignmentX(CENTER_ALIGNMENT);
-        leaderboardTable.setShowGrid(true);
-        leaderboardTable.setGridColor(Color.WHITE);
-        leaderboardTable.setDefaultEditor(Object.class, null);
-        leaderboardTable.getTableHeader().setReorderingAllowed(false);
-        
-        JScrollPane leaderboardScroll = new JScrollPane(leaderboardTable);
-        leaderboardScroll.getViewport().setBackground(Colours.BLUE.getColour());
-        
-        int widthPadding = 150;
-        int topPadding = 10;
-        int bottomPadding = 20;
-        Border paddingBorder = BorderFactory.createEmptyBorder(topPadding, widthPadding, bottomPadding, widthPadding);
-        leaderboardScroll.setBorder(paddingBorder);
-        add(leaderboardScroll, BorderLayout.CENTER);
-        
-        add(new LeaderboardDockGUI(game), BorderLayout.SOUTH);
+        add(new CenterPanel(game));
         
         populateLeaderboardTable();
-        
         setVisible(true);
     }
     

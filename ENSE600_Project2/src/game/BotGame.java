@@ -56,6 +56,7 @@ public class BotGame extends Game
 
                 if(getCurrentPlayer().getName().equals("Bot"))
                 {
+                    
                     while(true)
                     {
                         col = random.nextInt(7);

@@ -46,6 +46,8 @@ public class CurrentPlayerGUI extends JPanel
         int height = getHeight();
 
         int arcWidth = 50; 
+        
+        setOpaque(false);
 
         g.setColor(Colours.BLUE.getColour());
         g.fillRoundRect(0, 0, width, height, arcWidth, arcWidth); 
@@ -65,16 +67,15 @@ public class CurrentPlayerGUI extends JPanel
         int labelX = (width - g.getFontMetrics().stringWidth(nameLabel)) / 2; 
         int labelY = circleY - 20; 
         g.drawString(nameLabel, labelX, labelY);
-        
-        
-        String yourTurn = "";
-                
+
         if(player.isTurn())
         {
-            yourTurn = "Your Turn";
+            String yourTurn = "Your Turn";
             int turnX = (width - g.getFontMetrics().stringWidth(yourTurn)) / 2;;
             int turnY = circleY + circleSize + 60; 
             g.drawString(yourTurn, turnX, turnY);
         }
+        
+        
     }
 }
