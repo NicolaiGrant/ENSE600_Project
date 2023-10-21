@@ -29,11 +29,13 @@ public class MainMenuGUI extends javax.swing.JFrame
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        int screenWidth = screenSize.width;
-        int screenHeight = screenSize.height;
-        int frameWidth = screenWidth / 2 + 200;
-        int frameHeight = screenHeight / 2 + 200;
-        setSize(frameWidth, frameHeight);
+        //int screenWidth = screenSize.width;
+        //int screenHeight = screenSize.height;
+        //int frameWidth = screenWidth / 2 + 200;
+        //int frameHeight = screenHeight / 2 + 200;
+        //int frameWidth = 1280;
+        //int frameHeight = 820;
+        //setSize(frameWidth, frameHeight);
         setLocationRelativeTo(null);
         setAlwaysOnTop(true);
         setVisible(true);
@@ -272,11 +274,14 @@ public class MainMenuGUI extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
-        setMinimumSize(new java.awt.Dimension(1480, 920));
+        setMinimumSize(new java.awt.Dimension(1280, 820));
+        setPreferredSize(new java.awt.Dimension(1280, 820));
 
         jPanel1.setBackground(new java.awt.Color(93, 139, 186));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
+        jPanel1.setMinimumSize(new java.awt.Dimension(1280, 820));
+        jPanel1.setName(""); // NOI18N
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         jButton2.setBackground(new java.awt.Color(102, 153, 204));
@@ -394,11 +399,11 @@ public class MainMenuGUI extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1280, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

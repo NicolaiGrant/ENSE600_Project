@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,9 +19,8 @@ public class WinDialog extends JDialog
     
     public WinDialog(String winner)
     {
-        setSize(720, 80);
         setUndecorated(true);
-        setLocationRelativeTo(null);
+        
         
         JPanel panel = new JPanel() {};     
         panel.setBackground(BACKGROUND);
@@ -28,12 +28,15 @@ public class WinDialog extends JDialog
         JLabel winMessage = new JLabel("Connect Four! " + winner + " Wins!");
         winMessage.setFont(new Font("TW Cen MT Condensed Extra Bold", Font.BOLD, 60));
         winMessage.setForeground(Color.WHITE);
+        winMessage.setHorizontalAlignment(JLabel.CENTER);
+        setSize(new Dimension(winMessage.getPreferredSize().width + 40, 80));
         panel.add(winMessage);
          
         add(panel);
+        setLocationRelativeTo(null);
         setVisible(true);
         
-        int delay = 2000; // 2 second delay
+        int delay = 2000;
         // Close the Win Dialog after delay
         Timer timer = new Timer(delay, new ActionListener() 
         {

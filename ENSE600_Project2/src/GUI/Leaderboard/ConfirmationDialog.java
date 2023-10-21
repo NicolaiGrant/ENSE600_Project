@@ -5,14 +5,17 @@ import game.Game;
 import static game.Game.BACKGROUND;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class ConfirmationDialog extends JDialog
 {
@@ -26,11 +29,13 @@ public class ConfirmationDialog extends JDialog
         JPanel panel = new JPanel() {};
         panel.setBackground(BACKGROUND);
 
-        JLabel warningMessage = new JLabel("Are you sure you would like to clear the leaderboard? This cannot be undone!");
+        JLabel warningMessage = new JLabel("Are you sure you would like to clear the leaderboard?");
+        JLabel lineTwo = new JLabel("This cannot be undone!");
         warningMessage.setFont(new Font("SansSerif", Font.PLAIN, 20));
-        
-        //panel.add(add(new Spacer(80,80)));
+        lineTwo.setFont(new Font("SansSerif", Font.PLAIN, 20));
+
         warningMessage.setForeground(Color.WHITE);
+        lineTwo.setForeground(Color.WHITE);
 
         JButton clearButton = new JButton("Clear");
         JButton backButton = new JButton("Back");
@@ -50,8 +55,16 @@ public class ConfirmationDialog extends JDialog
         buttonPanel.add(Box.createRigidArea(new Dimension(20, 0))); // Add spacing between buttons
         buttonPanel.add(backButton);
         
+        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS)); // Use BoxLayout for vertical alignment
+        
+        JPanel centerAlignedPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)); // Create a panel with center-aligned layout
+        centerAlignedPanel.add(lineTwo);
+        centerAlignedPanel.setBackground(BACKGROUND);
+
         panel.add(warningMessage);
-        panel.add(Box.createRigidArea(new Dimension(0, 100))); // Add spacing between message and buttons
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add spacing between message and buttons
+        panel.add(centerAlignedPanel);
+        panel.add(Box.createRigidArea(new Dimension(0, 20))); // Add spacing between message and buttons
         panel.add(buttonPanel);
         
         clearButton.addActionListener(new ActionListener() 

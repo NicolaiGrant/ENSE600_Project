@@ -12,10 +12,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import packages.Disc;
 
-/**
- *
- * @author RYZEN RTX
- */
 public class BoardTest {
     
     private Board board;

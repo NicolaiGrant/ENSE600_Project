@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Sat Oct 21 15:15:07 NZDT 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-018b-5003-ca40-00000f231c50 
+on database directory /Users/nicolaigrant/Library/CloudStorage/OneDrive-UniversityofCanterbury/ENSE600 - Software Construction/ENSE600_Project/ENSE600_Project2/LeaderboardDB_Ebd with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@75b84c92 
+Loaded from file:/Users/nicolaigrant/Library/CloudStorage/OneDrive-UniversityofCanterbury/ENSE600%20-%20Software%20Construction/ENSE600_Project/ENSE600_Project2/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=19.0.2+7-44
+user.dir=/Users/nicolaigrant/Library/CloudStorage/OneDrive-UniversityofCanterbury/ENSE600 - Software Construction/ENSE600_Project/ENSE600_Project2
+os.name=Mac OS X
+os.arch=aarch64
+os.version=14.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
