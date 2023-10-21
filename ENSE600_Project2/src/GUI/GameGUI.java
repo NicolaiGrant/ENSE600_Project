@@ -22,7 +22,6 @@ public class GameGUI extends JFrame
     
     public GameGUI(Game game)
     {
-        //setTitle("Connect Four! - Two Player Mode");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         getContentPane().setBackground(BACKGROUND);
@@ -74,14 +73,14 @@ public class GameGUI extends JFrame
     {
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension screenSize = kit.getScreenSize();
-        setResizable(true);
+        setResizable(false);
         //int screenWidth = screenSize.width;
         //int screenHeight = screenSize.height;
         //int frameWidth = screenWidth / 2 + 500;
         //int frameHeight = screenHeight / 2 + 400;
-        int screenWidth = 1380;
-        int screenHeight = 880;
-        setSize(screenWidth, screenHeight);
+        int frameWidth = 1380;
+        int frameHeight = 880;
+        setSize(frameWidth, frameHeight);
         setLocationRelativeTo(null);
     }
     

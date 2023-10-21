@@ -2,22 +2,12 @@ package GUI.Leaderboard;
 
 import Database.LeaderboardDB;
 import Database.LeaderboardData;
-import GUI.Colours;
-import GUI.MenuDockGUI;
-import GUI.Spacer;
 import game.Game;
-import static game.Game.BACKGROUND;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
-import java.awt.GridBagLayout;
 import java.awt.Toolkit;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 public class LeaderboardGUI extends JFrame

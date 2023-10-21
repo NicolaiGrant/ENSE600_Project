@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class LeaderboardDB 
 {
@@ -17,12 +15,15 @@ public class LeaderboardDB
     
     String leaderboard = "LEADERBOARD";
 
-    public LeaderboardDB() {
+    public LeaderboardDB() 
+    {
         dbManager = new DBManager();
         conn = dbManager.getConnection();
-        try {
+        try 
+        {
             statement = conn.createStatement();
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
 
@@ -30,6 +31,8 @@ public class LeaderboardDB
     
     public void createLeaderboardTable()
     {
+        // Initialise the Leaderboard table
+        
         checkExistingTable("LEADERBOARD");        
         
         String sqlCreateTable = "CREATE TABLE LEADERBOARD (PLAYER VARCHAR(20), SCORE INT, DATE VARCHAR(20))";
@@ -38,12 +41,16 @@ public class LeaderboardDB
     
     public void updateTable(String playerName, int score, String date)
     {
+        // Update the database with player name, score and date
+        
         String sqlInsertRecords = "INSERT INTO LEADERBOARD VALUES ('" + playerName+ "', " + score + ", '" + date + "')";
         dbManager.updateDB(sqlInsertRecords);
     }
     
     public void getTable()
     {
+        // Return the database table
+        
         try 
         {
             String query = "SELECT * FROM LEADERBOARD";

@@ -6,7 +6,6 @@ import javax.swing.*;
 
 public class CurrentPlayerGUI extends JPanel
 {
-    // 
     private Player player;
     private Color colour;
     

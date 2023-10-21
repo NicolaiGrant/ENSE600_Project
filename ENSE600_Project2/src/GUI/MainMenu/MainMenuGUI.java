@@ -8,10 +8,6 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.time.LocalDate;
 
-/**
- *
- * @author RYZEN RTX
- */
 public class MainMenuGUI extends javax.swing.JFrame 
 {
     private Game game;
@@ -20,25 +16,12 @@ public class MainMenuGUI extends javax.swing.JFrame
     public MainMenuGUI() {
         initComponents();
         setTitle("Connect Four! Main Menu");
-        setScreenSize();
-        this.game = new Game();
-        this.botGame = new BotGame();
-    }
-    
-    public void setScreenSize()
-    {
-        Toolkit kit = Toolkit.getDefaultToolkit();
-        Dimension screenSize = kit.getScreenSize();
-        //int screenWidth = screenSize.width;
-        //int screenHeight = screenSize.height;
-        //int frameWidth = screenWidth / 2 + 200;
-        //int frameHeight = screenHeight / 2 + 200;
-        //int frameWidth = 1280;
-        //int frameHeight = 820;
-        //setSize(frameWidth, frameHeight);
+        setResizable(false);
         setLocationRelativeTo(null);
         setAlwaysOnTop(true);
         setVisible(true);
+        this.game = new Game();
+        this.botGame = new BotGame();
     }
 
     /**
@@ -49,7 +32,6 @@ public class MainMenuGUI extends javax.swing.JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         userInput1Player = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
@@ -71,6 +53,7 @@ public class MainMenuGUI extends javax.swing.JFrame
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         userInput1Player.setLocation(new java.awt.Point(0, 0));
         userInput1Player.setName("playerInput"); // NOI18N
@@ -275,14 +258,13 @@ public class MainMenuGUI extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAutoRequestFocus(false);
         setMinimumSize(new java.awt.Dimension(1280, 820));
-        setPreferredSize(new java.awt.Dimension(1280, 820));
 
         jPanel1.setBackground(new java.awt.Color(93, 139, 186));
         jPanel1.setAlignmentX(0.0F);
         jPanel1.setAlignmentY(0.0F);
         jPanel1.setMinimumSize(new java.awt.Dimension(1280, 820));
         jPanel1.setName(""); // NOI18N
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setBackground(new java.awt.Color(102, 153, 204));
         jButton2.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -300,14 +282,7 @@ public class MainMenuGUI extends javax.swing.JFrame
                 twoPlayerButton(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 125;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 621, 0, 0);
-        jPanel1.add(jButton2, gridBagConstraints);
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 466, 265, 60));
 
         jButton1.setBackground(new java.awt.Color(102, 153, 204));
         jButton1.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -324,14 +299,7 @@ public class MainMenuGUI extends javax.swing.JFrame
                 leaderboardButton(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.ipadx = 163;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 621, 0, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 544, 265, 60));
 
         jButton3.setBackground(new java.awt.Color(102, 153, 204));
         jButton3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -348,14 +316,7 @@ public class MainMenuGUI extends javax.swing.JFrame
                 exitButton(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.ipadx = 236;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 621, 188, 0);
-        jPanel1.add(jButton3, gridBagConstraints);
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 622, 265, 60));
 
         jButton4.setBackground(new java.awt.Color(102, 153, 204));
         jButton4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -372,28 +333,26 @@ public class MainMenuGUI extends javax.swing.JFrame
                 computerButton(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipadx = 122;
-        gridBagConstraints.ipady = 36;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(105, 621, 0, 0);
-        jPanel1.add(jButton4, gridBagConstraints);
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(521, 388, 265, 60));
 
         jLabel1.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 80)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Connect Four");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 264;
-        gridBagConstraints.ipady = 28;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(218, 434, 0, 400);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(334, 168, 646, 115));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -523,6 +482,7 @@ public class MainMenuGUI extends javax.swing.JFrame
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
