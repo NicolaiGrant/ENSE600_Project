@@ -1,5 +1,5 @@
 /*
-    Connect 4 - ENSE600 Project 1
+    Connect 4 - ENSE600 Project 2
     
     Nicolai Grant
 
@@ -10,13 +10,6 @@ package packages;
 
 public enum Disc
 {
-    /*
-    RED("x "),
-    YELLOW("o "),
-    BLUE("\u1F535 "),
-    EMPTY("- ");
-    */
-    
     RED("🔴 "),
     YELLOW("🟡 "),
     BLUE("🔵 "),

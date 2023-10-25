@@ -1,3 +1,11 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package game;
 
 import Database.LeaderboardDB;
@@ -32,6 +40,8 @@ public class Game
     
     public void assignPlayers(String player1Name, String player2Name)
     {
+        // Assign the players to a disc colour
+        
         this.player1 = new Player(player1Name);
         this.player2 = new Player(player2Name);
         
@@ -52,6 +62,8 @@ public class Game
     
     public void switchPlayers()
     {
+        // Swap player colours
+        
         if(getPlayer1().getColour() == Colours.RED.getColour())
         {
             getPlayer2().setDisc(Disc.YELLOW);
@@ -165,6 +177,8 @@ public class Game
 
     public void dropPiece(int col)
     {
+        // If a piece is placed, update the game logic and repaint the board
+        // until the game is over.
         try
         {
             this.getGameGUI().getPlayer1Panel().repaint();
@@ -193,6 +207,8 @@ public class Game
     
     public void checkGameOver()
     {
+        // Checks if the board is full or there is a connect four
+        
         if(isConnectFour())
         {
             getGameGUI().setTitle("Connect Four! " + this.currentPlayer.getName() + " Wins!");

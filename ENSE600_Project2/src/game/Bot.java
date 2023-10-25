@@ -1,7 +1,13 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package game;
 
-import GUI.Colours;
-import java.awt.Color;
 import java.util.Random;
 
 public class Bot extends Player

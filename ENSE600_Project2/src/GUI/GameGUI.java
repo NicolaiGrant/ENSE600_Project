@@ -1,6 +1,13 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package GUI;
 
-import game.Bot;
 import game.Game;
 import game.Player;
 import java.awt.*;

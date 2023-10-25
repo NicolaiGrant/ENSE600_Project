@@ -1,5 +1,5 @@
 /*
-    Connect 4 - ENSE600 Project 1
+    Connect 4 - ENSE600 Project 2
     
     Nicolai Grant
 

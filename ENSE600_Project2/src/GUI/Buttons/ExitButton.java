@@ -1,3 +1,11 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package GUI.Buttons;
 
 import game.Game;
@@ -20,11 +28,4 @@ public class ExitButton extends MenuButton
             }
         });
     }
-//    
-//    @Override
-//    public void paintComponent(Graphics g)
-//    {
-//        g.setColor(Color.YELLOW);
-//        g.fillOval(0, 0, buttonSize, buttonSize);
-//    }
 }

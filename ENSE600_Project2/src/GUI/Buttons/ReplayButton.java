@@ -1,8 +1,14 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package GUI.Buttons;
 
-import GUI.GameGUI;
 import game.Game;
-import java.awt.*;
 import java.awt.event.*;
 
 public class ReplayButton extends MenuButton
@@ -22,11 +28,4 @@ public class ReplayButton extends MenuButton
             }
         });
     }
-    
-//    @Override
-//    public void paintComponent(Graphics g)
-//    {
-//        g.setColor(Color.WHITE);
-//        g.fillOval(0, 0, buttonSize, buttonSize);
-//    }
 }

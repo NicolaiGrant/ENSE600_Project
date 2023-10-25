@@ -1,3 +1,11 @@
+/*
+    Connect 4 - ENSE600 Project 2
+    
+    Nicolai Grant
+
+    ID: 21145343
+*/
+
 package Database;
 
 public class LeaderboardData implements Comparable<LeaderboardData>
