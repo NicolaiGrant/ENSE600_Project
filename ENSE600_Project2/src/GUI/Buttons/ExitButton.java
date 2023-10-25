@@ -23,7 +23,16 @@ public class ExitButton extends MenuButton
             @Override
             public void actionPerformed(ActionEvent e) 
             {
-                game.getGameGUI().dispose();
+                if(game.getLeaderboardGUI() != null)
+                {
+                    game.getLeaderboardGUI().dispose();
+                    game.getLeaderboardDB().closeConnection();
+                }
+                else
+                {
+                    game.getGameGUI().dispose();
+                }
+                
                 game.exit();
             }
         });

@@ -8,12 +8,9 @@
 
 package GUI.MainMenu;
 
-import GUI.GameGUI;
 import GUI.Leaderboard.LeaderboardGUI;
 import game.BotGame;
 import game.Game;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.time.LocalDate;
 
 public class MainMenuGUI extends javax.swing.JFrame 

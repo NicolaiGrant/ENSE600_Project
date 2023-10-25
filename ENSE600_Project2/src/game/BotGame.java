@@ -48,7 +48,8 @@ public class BotGame extends Game
         super.play();
     }
     
-    @Override public void dropPiece(int col)
+    @Override 
+    public void dropPiece(int col)
     {
         try
         {
